@@ -13,7 +13,7 @@ public class Microwave : Appliance
     private float cookTime;
     private float cookedInTime;
 
-
+    //update runs every frame
     private void Update()
     {
         if(state == MicrowaveState.Cooking)
@@ -36,7 +36,6 @@ public class Microwave : Appliance
         }
     }
 
-
     //use for initialization
     private void Start()
     {
@@ -55,6 +54,7 @@ public class Microwave : Appliance
     /// <param name="player"></param>
     public override void Interact(Player player)
     {
+        //starts an item cooking
         if (player.HeldItem != null && containedItem == null && state == MicrowaveState.Off && cookableTypes.Contains(player.HeldItem.Type))
         {
             containedItem = player.HeldItem;
@@ -67,6 +67,7 @@ public class Microwave : Appliance
 
             Debug.Log("Player left: " + containedItem.Type);
         }
+        //player gets item from microwave
         else if (player.HeldItem == null && containedItem != null && state == MicrowaveState.Off)
         {
             player.HeldItem = containedItem;

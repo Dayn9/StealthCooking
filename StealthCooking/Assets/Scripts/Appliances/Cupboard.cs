@@ -7,6 +7,9 @@ public class Cupboard : Appliance
     [SerializeField] private FoodType startingType;
     private Food storedItem;
 
+    /// <summary>
+    /// Sets up starting item
+    /// </summary>
     private void Start()
     {
         storedItem = gameObject.AddComponent<Food>();
@@ -26,6 +29,7 @@ public class Cupboard : Appliance
     /// </summary>
     public override void Interact(Player player)
     {
+        //player gets item from cupboard
         if(player.HeldItem == null && storedItem != null)
         {
             player.HeldItem = storedItem;
@@ -33,6 +37,7 @@ public class Cupboard : Appliance
 
             Debug.Log("Player got: " + player.HeldItem.Type);
         }
+        //player puts item in cupboard
         else if(storedItem == null && player.HeldItem != null)
         {
             storedItem = player.HeldItem;

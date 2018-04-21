@@ -9,8 +9,9 @@ public class CraftingTable : Appliance
     private Food storedItem;
     private Dictionary<FoodType, Dictionary<FoodType, FoodType>> foodCombinations;
 
-
-
+    /// <summary>
+    /// Sets up possible combinations
+    /// </summary>
     void Awake()
     {
         // initialization
@@ -23,7 +24,9 @@ public class CraftingTable : Appliance
         AddCombination(FoodType.Dough, FoodType.Sauce, FoodType.SaucedDough);
         AddCombination(FoodType.SaucedDough, FoodType.Cheese, FoodType.Pizza);
     }
-
+    /// <summary>
+    /// Sets up items starting on the table
+    /// </summary>
     private void Start()
     {
         if (startingType != FoodType.Null)
@@ -33,15 +36,24 @@ public class CraftingTable : Appliance
         }
     }
 
-
+    /// <summary>
+    /// Adds a possible combination to the list
+    /// </summary>
+    /// <param name="reactant_1">First item in combination</param>
+    /// <param name="reactant_2">Second item in combination</param>
+    /// <param name="product">Product of the two items</param>
     private void AddCombination(FoodType reactant_1, FoodType reactant_2, FoodType product)
     {
         foodCombinations[reactant_1].Add(reactant_2, product);
         foodCombinations[reactant_2].Add(reactant_1, product);
     }
 
+    /// <summary>
+    /// Lets the player interact with the crafting table
+    /// </summary>
     public override void Interact(Player player)
     {
+        //player gets item from table
         if(player.HeldItem == null && storedItem != null)
         {
             player.HeldItem = storedItem;
@@ -49,6 +61,7 @@ public class CraftingTable : Appliance
 
             Debug.Log("Player got: " + player.HeldItem.Type);
         }
+        //player puts item on empty table
         else if(storedItem == null && player.HeldItem != null)
         {
             storedItem = player.HeldItem;
@@ -56,6 +69,7 @@ public class CraftingTable : Appliance
 
             Debug.Log("Player left: " + storedItem.Type);
         }
+        //combines items
         else if (storedItem != null && player.HeldItem != null)
         {
             if (foodCombinations[player.HeldItem.Type].ContainsKey(storedItem.Type))
@@ -65,6 +79,10 @@ public class CraftingTable : Appliance
             }
 
             Debug.Log("Table now has: " + storedItem.Type);
+        }
+        else
+        {
+            //doesn't work
         }
     }
 }
