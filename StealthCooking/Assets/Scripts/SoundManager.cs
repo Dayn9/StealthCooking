@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour {
 
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
-    [SerializeField] private float maxSoundLevel;
+    private static float maxSoundLevel = 10;
     [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
 
@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour {
     /// Add noise to the total Sound
     /// </summary>
     /// <param name="volume">volume of sound to add (max is 10) </param>
-    public void AddSound(float volume)
+    public static void AddSound(float volume)
     {
         if (volume > 0)
         {
@@ -51,7 +51,7 @@ public class SoundManager : MonoBehaviour {
         Instantiate(ripplePrefab, position, ripplePrefab.transform.rotation);
     }
 
-    private void WakeParents()
+    private static void WakeParents()
     {
 
     }
