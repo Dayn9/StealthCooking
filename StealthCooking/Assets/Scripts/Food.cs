@@ -9,10 +9,13 @@ public enum FoodType
     Cheese,
     Pizza,
     SaucedDough,
-    UncookedPizza,
-    CookedPizza
+    CookedPizza,
 
     //etc
+
+
+
+    Null //only use this when setting the default food in an appliance to be "null"
 }
 
 public class Food : MonoBehaviour

@@ -21,13 +21,16 @@ public class Microwave : Appliance
             cookTime -= Time.deltaTime;
             cookedInTime -= Time.deltaTime;
 
-            if(cookedInTime <= 0)
+            if(cookedInTime <= 0 && cookableTypes.Contains(containedItem.Type))
             {
-                containedItem.Type = (FoodType)System.Enum.Parse(typeof(FoodType), "Cooked" + containedItem.Type.ToString());
+                string type = "Cooked" + containedItem.Type;
+                containedItem.Type = (FoodType)System.Enum.Parse(typeof(FoodType), type);
             }
 
             if(cookTime <= 0)
             {
+                state = MicrowaveState.Off;
+                Debug.Log("Finished cooking");
                 //SoundManager.AddSound(15.f);
             }
         }
@@ -59,13 +62,17 @@ public class Microwave : Appliance
 
             state = MicrowaveState.Cooking;
 
-            cookTime = 30;
-            cookedInTime = 26;
+            cookTime = 10;
+            cookedInTime = 8;
+
+            Debug.Log("Player left: " + containedItem.Type);
         }
         else if (player.HeldItem == null && containedItem != null && state == MicrowaveState.Off)
         {
             player.HeldItem = containedItem;
             containedItem = null;
+
+            Debug.Log("Player got: " + player.HeldItem.Type);
         }
         else
         {
