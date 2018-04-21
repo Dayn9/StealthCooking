@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour {
 
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
-    private static float maxSoundLevel = 10;
+    private static float maxSoundLevel = 20;
     [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
     private static GameObject ripple;
@@ -20,10 +20,8 @@ public class SoundManager : MonoBehaviour {
         soundMeter.maxValue = maxSoundLevel;
         soundMeter.interactable = false;
         soundMeter.value = soundMeter.minValue;
-        soundLevel = 5; //-------------------------------------------- TEMP <<<
 
         ripple = ripplePrefab;
-        AddSound(5, new Vector3(0, 10, 0));
 	}
 
     /// <summary>
@@ -51,10 +49,7 @@ public class SoundManager : MonoBehaviour {
     public static void AddSound(float volume, Vector3 position)
     {
         AddSound(volume);
-        GameObject newRipple = ripple;
-        newRipple.GetComponent<Ripple>().MaxSize = volume;
-        Instantiate(newRipple, position, ripple.transform.rotation);
-        
+        Instantiate(ripple, position, ripple.transform.rotation).GetComponent<Ripple>().MaxSize = volume ;
     }
 
     private static void WakeParents()
@@ -67,5 +62,10 @@ public class SoundManager : MonoBehaviour {
         soundLevel -= soundDecayRate;
         Mathf.Clamp(soundLevel, 0, maxSoundLevel);
         soundMeter.value = soundLevel;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddSound(2f, new Vector3(0, 10, 0));
+        }
     }
 }
