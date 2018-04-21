@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+//using UnityEngine.UI.Selectable;
 
 public class SoundManager : MonoBehaviour {
 
-    private float soundLevel;
+    private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
-    [SerializeField] private const float maxSoundLevel = 10; //
+    [SerializeField] private float maxSoundLevel;
+    [SerializeField] private Slider soundMeter;
 
 	// Use this for initialization
 	void Start () {
         soundLevel = 0.0f;
+        soundMeter.minValue = 0;
+        soundMeter.maxValue = maxSoundLevel;
+        soundMeter.interactable = false;
+        soundMeter.value = soundMeter.minValue;
+
+        soundLevel = 5;
 	}
 
     /// <summary>
@@ -48,5 +57,7 @@ public class SoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         soundLevel -= soundDecayRate;
+        Mathf.Clamp(soundLevel, 0, maxSoundLevel);
+        soundMeter.value = soundLevel;
     }
 }

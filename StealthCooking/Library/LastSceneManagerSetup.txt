@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/DavisScene.unity
-=======
 - path: Assets/Scenes/DaneSoundText.unity
->>>>>>> cf407a0f78ee285100292c445101605064642665
   isLoaded: 1
   isActive: 1
