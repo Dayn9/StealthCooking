@@ -1,4 +1,15 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+sceneSetups:
+- path: Assets/Scenes/DavisScene.unity
+=======
+<<<<<<< HEAD
+sceneSetups: []
+=======
+>>>>>>> 165f4c83d7e6435bcc42792fc88c06ec68de164f
 sceneSetups:
 - path: Assets/Scenes/DaneSoundText.unity
+>>>>>>> dc68c609c9836d1e6c065ec22266fee99e5711f7
   isLoaded: 1
   isActive: 1
