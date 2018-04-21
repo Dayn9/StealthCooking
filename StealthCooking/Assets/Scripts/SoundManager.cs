@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour {
     private static float maxSoundLevel = 10;
     [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
+    private static GameObject ripple;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +20,10 @@ public class SoundManager : MonoBehaviour {
         soundMeter.maxValue = maxSoundLevel;
         soundMeter.interactable = false;
         soundMeter.value = soundMeter.minValue;
+        soundLevel = 5; //-------------------------------------------- TEMP <<<
 
-        soundLevel = 5;
+        ripple = ripplePrefab;
+        AddSound(5, new Vector3(0, 10, 0));
 	}
 
     /// <summary>
@@ -45,10 +48,13 @@ public class SoundManager : MonoBehaviour {
     /// </summary>
     /// <param name="volume">volume of sound to add (max is 10) </param>
     /// <param name="position">location of the sound</param>
-    public void AddSound(float volume, Vector2 position)
+    public static void AddSound(float volume, Vector3 position)
     {
         AddSound(volume);
-        Instantiate(ripplePrefab, position, ripplePrefab.transform.rotation);
+        GameObject newRipple = ripple;
+        newRipple.GetComponent<Ripple>().MaxSize = volume;
+        Instantiate(newRipple, position, ripple.transform.rotation);
+        
     }
 
     private static void WakeParents()
