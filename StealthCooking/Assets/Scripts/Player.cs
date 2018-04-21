@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
             //checks to see if any appliances are within range of the player
             List<Appliance> appliances = (from gameObject in GameObject.FindGameObjectsWithTag("Appliance") 
                 where Vector3.Distance(gameObject.transform.position, transform.position) <= INTERACT_DISTANCE select gameObject.GetComponent<Appliance>()).ToList();
-
+            
             //if they are, start the interaction
             if(appliances.Count > 0)
             {
