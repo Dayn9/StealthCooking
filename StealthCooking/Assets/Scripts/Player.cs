@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private Food heldItem;
 
+    public Food HeldItem { get { return heldItem; } set { heldItem = value; } }
+
 
 
     #region movement
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
                 Appliance appliance = appliances[0];
                 appliance.Interact(this);
             }
+
+            Debug.Log("");
         }
 
         if (state == PlayerState.Waiting)
