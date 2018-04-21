@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
                 Appliance appliance = appliances[0];
                 appliance.Interact(this);
             }
+
+            Debug.Log("");
         }
 
         if (state == PlayerState.Waiting)
