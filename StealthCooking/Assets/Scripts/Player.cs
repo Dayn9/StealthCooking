@@ -7,7 +7,7 @@ public enum PlayerState { Waiting, Moving, Interacting }
 
 public class Player : MonoBehaviour
 {
-    private const float INTERACT_DISTANCE = 1;
+    private const float INTERACT_DISTANCE = 2;
 
     private PlayerState state;
 
