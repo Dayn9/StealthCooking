@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private Food heldItem;
 
+    public Food HeldItem { get { return heldItem; } set { heldItem = value; } }
+
 
 
     #region movement
