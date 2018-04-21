@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: 9d6854e8f51f079489b86bb375773cea
-timeCreated: 1524336754
-licenseType: Pro
+guid: 3351acbdc2eb8674c90d7a45211c7fa7
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -86,18 +84,7 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline:
-    - - {x: -86, y: 129}
-      - {x: -129, y: 108}
-      - {x: -129, y: -90}
-      - {x: -115, y: -129}
-      - {x: 127, y: -129}
-      - {x: 129, y: -119}
-      - {x: 129, y: 129}
-    - - {x: -113, y: -17}
-      - {x: 10, y: 114}
-      - {x: 105, y: 48}
-      - {x: 48, y: -105}
+    outline: []
     physicsShape: []
   spritePackingTag: 
   userData: 

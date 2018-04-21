@@ -8,6 +8,9 @@ public enum FoodType
     Sauce,
     Cheese,
     Pizza,
+    SaucedDough,
+    UncookedPizza,
+    CookedPizza
 
     //etc
 }
