@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum PlayerState { Waiting, Moving, Interacting }
+public enum PlayerState { Waiting, Interacting }
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
 
 
     #region movement
+    Rigidbody rigidbody;
+
+
+
     private Vector3 moveStart;
     private Vector3 moveEnd;
     private float lerpTime;
@@ -27,6 +31,7 @@ public class Player : MonoBehaviour
     void Start ()
     {
         state = PlayerState.Waiting;
+        rigidbody = gameObject.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -50,33 +55,47 @@ public class Player : MonoBehaviour
 
         if (state == PlayerState.Waiting)
         {
-            //create vector for movement
             Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             movement.Normalize();
-            moveEnd = transform.position + movement;
+            movement *= 5;
 
-            moveStart = transform.position;
-            lerpTime = 0f;
+            rigidbody.velocity = movement;
 
-            //set player to moving so as not to accept new input
-            if (movement != Vector3.zero)
-            {
-                state = PlayerState.Moving;
-            }
+
+
+
+            ////create vector for movement
+            //Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            //movement.Normalize();
+            //moveEnd = transform.position + movement;
+
+            //moveStart = transform.position;
+            //lerpTime = 0f;
+
+            ////set player to moving so as not to accept new input
+            //if (movement != Vector3.zero)
+            //{
+            //    state = PlayerState.Moving;
+            //}
         }
 
-        if (state == PlayerState.Moving)
+        if((Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) || state == PlayerState.Interacting)
         {
-            //smoothly move player across distance
-            lerpTime += Time.deltaTime * 5;
-            transform.position = Vector3.Lerp(moveStart, moveEnd, lerpTime);
-
-            //return player to resting state
-            if(lerpTime >= 1f)
-            {
-                transform.position = moveEnd;
-                state = PlayerState.Waiting;
-            }
+            
         }
+
+        //if (state == PlayerState.Moving)
+        //{
+        //    //smoothly move player across distance
+        //    lerpTime += Time.deltaTime * 5;
+        //    transform.position = Vector3.Lerp(moveStart, moveEnd, lerpTime);
+
+        //    //return player to resting state
+        //    if(lerpTime >= 1f)
+        //    {
+        //        transform.position = moveEnd;
+        //        state = PlayerState.Waiting;
+        //    }
+        //}
     }
 }
