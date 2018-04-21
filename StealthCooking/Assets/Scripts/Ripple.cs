@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Ripple : MonoBehaviour {
 
-    private float maxSize = 10; //max radius width in Unity units
+    private float maxSize; //max radius width in Unity units
     private static float growSpeed = 0.1f; //how fast sound travels
-    private float fadeRate = 0; //how fast sound fades
+    private float fadeRate; //how fast sound fades
     private new SpriteRenderer renderer;
 
     public float MaxSize {
+        get { return maxSize; }
         set
         {
-            if (value > maxSize)
+            if (value > 0)
             {
                 maxSize = value;
                 fadeRate = growSpeed / maxSize;
@@ -37,7 +38,6 @@ public class Ripple : MonoBehaviour {
     private void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
-        fadeRate = growSpeed / maxSize;
         transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
     }
 }
