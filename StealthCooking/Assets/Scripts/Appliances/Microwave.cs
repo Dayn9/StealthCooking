@@ -31,7 +31,7 @@ public class Microwave : Appliance
             {
                 state = MicrowaveState.Off;
                 Debug.Log("Finished cooking");
-                //SoundManager.AddSound(15.f);
+                //SoundManager.AddSound(15);
             }
         }
     }
