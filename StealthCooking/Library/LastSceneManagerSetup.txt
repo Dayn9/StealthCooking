@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+sceneSetups: []
+=======
 sceneSetups:
 - path: Assets/Scenes/DaneSoundText.unity
   isLoaded: 1
   isActive: 1
+>>>>>>> 2e4ad9d1eeb015a4dbdaa4ffcc72bc789b01f475
