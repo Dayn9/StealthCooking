@@ -1,19 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum PlayerState { Waiting, Moving, Interacting }
 
 public class Player : MonoBehaviour
 {
+    private const float INTERACT_DISTANCE = 2;
+
     private PlayerState state;
 
+    private Food heldItem;
+
+
+
+    #region movement
     private Vector3 moveStart;
     private Vector3 moveEnd;
     private float lerpTime;
+    #endregion
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         state = PlayerState.Waiting;
 	}
@@ -23,7 +32,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //check for possible interactions
+            //checks to see if any appliances are within range of the player
+            List<Appliance> appliances = (from gameObject in GameObject.FindGameObjectsWithTag("Appliance") 
+                where Vector3.Distance(gameObject.transform.position, transform.position) <= INTERACT_DISTANCE select gameObject.GetComponent<Appliance>()).ToList();
+
+            //if they are, start the interaction
+            if(appliances.Count > 0)
+            {
+                Appliance appliance = appliances[0];
+                appliance.Interact(this);
+            }
         }
 
         if (state == PlayerState.Waiting)
