@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip[] footsteps;
     public static AudioClip microwaveOpen, microwaveHum, microwaveClose, microwaveBeep, 
                             fridgeOpen, fridgeHum, fridgeClose, 
-                            pickup, place, bark;
+                            pickup, place, bark, squish, chop;
 
     private static System.Random rand;
 
@@ -42,6 +42,8 @@ public class SoundManager : MonoBehaviour
         pickup = holder.pickup;
         place = holder.place;
         bark = holder.bark;
+        squish = holder.squish;
+        chop = holder.chop;
 
         legalGuardian = holder.legalGuardian;
 
