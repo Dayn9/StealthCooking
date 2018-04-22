@@ -25,6 +25,14 @@ public class CraftingTable : Appliance
         //Set up combinations here
         AddCombination(FoodType.Dough, FoodType.Sauce, FoodType.SaucedDough);
         AddCombination(FoodType.SaucedDough, FoodType.Cheese, FoodType.Pizza);
+        AddCombination(FoodType.Tortilla, FoodType.Rice, FoodType.RicedTortilla);
+        AddCombination(FoodType.RicedTortilla, FoodType.Beans, FoodType.BeanAndRiceTortilla);
+        AddCombination(FoodType.BeanAndRiceTortilla, FoodType.GroundBeef, FoodType.Burrito);
+        AddCombination(FoodType.Bread, FoodType.Cheese, FoodType.GrilledCheese);
+        AddCombination(FoodType.Noodles, FoodType.Water, FoodType.WetNoodles);
+        AddCombination(FoodType.WetNoodles, FoodType.Sauce, FoodType.Spaghetti);
+        AddCombination(FoodType.Chicken, FoodType.Cheese, FoodType.CheesedChicken);
+        AddCombination(FoodType.CheesedChicken, FoodType.Ham, FoodType.ChickenCordonBleu);
     }
     /// <summary>
     /// Sets up items starting on the table
