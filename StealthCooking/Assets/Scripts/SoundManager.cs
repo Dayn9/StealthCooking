@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.UI;
 
+=======
+//using UnityEngine.UI;
+>>>>>>> 61925844e1e25b99ef8f651207cafba35ef1bebe
 //using UnityEngine.UI.Selectable;
 
 public class SoundManager : MonoBehaviour {
@@ -10,7 +14,7 @@ public class SoundManager : MonoBehaviour {
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
     private static float maxSoundLevel = 20;
-    [SerializeField] private Slider soundMeter;
+    //[SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
     private static GameObject ripple;
 
@@ -26,10 +30,10 @@ public class SoundManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 
         soundLevel = 0.0f;
-        soundMeter.minValue = 0;
-        soundMeter.maxValue = maxSoundLevel;
-        soundMeter.interactable = false;
-        soundMeter.value = soundMeter.minValue;
+        //soundMeter.minValue = 0;
+        //soundMeter.maxValue = maxSoundLevel;
+        //soundMeter.interactable = false;
+        //soundMeter.value = soundMeter.minValue;
 
         ripple = ripplePrefab;
 
@@ -85,7 +89,7 @@ public class SoundManager : MonoBehaviour {
 	void Update () {
         soundLevel -= soundDecayRate;
         Mathf.Clamp(soundLevel, 0, maxSoundLevel);
-        soundMeter.value = soundLevel;
+        //soundMeter.value = soundLevel;
 
         if (Input.GetKeyDown(KeyCode.P))
         {
