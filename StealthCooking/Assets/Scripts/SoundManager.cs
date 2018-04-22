@@ -41,23 +41,20 @@ public class SoundManager : MonoBehaviour {
         rand = new System.Random();
     }
 
-    /// <summary>
-    /// Add noise to the total Sound
-    /// </summary>
-    /// <param name="volume">volume of sound to add (max is 10) </param>
-    public static void AddSound(float volume)
+    // Update is called once per frame
+    void Update()
     {
-        if (volume > 0)
-        {
-            soundLevel += volume;
-            //sound level above max threshold
-            if (soundLevel > maxSoundLevel) {
-                WakeParents();
-                soundLevel = maxSoundLevel;
-            }
-        }
+        soundLevel -= soundDecayRate;
+        if (soundLevel < 0) { soundLevel = 0; }
+        if (soundLevel > maxSoundLevel) { soundLevel = maxSoundLevel; }
+        soundMeter.value = soundLevel;
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddSound(2f, new Vector3(0, 10, 0), microwaveBeep, audioSource);
+        }
     }
+
     /// <summary>
     /// Add noise to the total Sound at a specific location
     /// </summary>
@@ -65,7 +62,18 @@ public class SoundManager : MonoBehaviour {
     /// <param name="position">location of the sound</param>
     public static void AddSound(float volume, Vector3 position)
     {
-        AddSound(volume);
+        //Play the Sound
+        if (volume > 0)
+        {
+            soundLevel += volume;
+            //sound level above max threshold
+            if (soundLevel > maxSoundLevel)
+            {
+                WakeParents();
+                soundLevel = maxSoundLevel;
+            }
+        }
+        //Create the Ripple
         Instantiate(ripple, position, ripple.transform.rotation).GetComponent<Ripple>().MaxSize = volume ;
     }
     /// <summary>
@@ -81,23 +89,40 @@ public class SoundManager : MonoBehaviour {
         PlaySound(clip, source);
     }
 
+    /// <summary>
+    /// Add noise to the total Sound at a specific location and plays a sound if not already
+    /// </summary>
+    /// <param name="volume">volume of sound to add (max is 10) </param>
+    /// <param name="playerPosition">ocation of the sound</param>
+    /// <param name="clip">Audio Clip to Play</param>
+    /// <param name="source">AudioSource component of object playing sound</param>
+    public static void AddSoundContinuous(float volume, Vector3 position, AudioClip clip, AudioSource source)
+    {
+        AddSound(volume, position);
+        PlaySoundContinuous(clip, source);
+    }
+
+    //-----------------------------------------------------------------------------<<< ADD CODE FOR SPAWNING LEGAL GUARDIAN HERE <<<
     private static void WakeParents()
     {
 
     }
 
-	// Update is called once per frame
-	void Update () {
-        soundLevel -= soundDecayRate;
-        if(soundLevel < 0) { soundLevel = 0; }
-        if(soundLevel > maxSoundLevel) { soundLevel = maxSoundLevel; }
-        soundMeter.value = soundLevel;
 
-        if (Input.GetKeyDown(KeyCode.P))
+    /// <summary>
+    /// Only plays sound if source isn't already
+    /// </summary>
+    /// <param name="clip">Audio Clip to Play</param>
+    /// <param name="source">AudioSource component of object playing sound<</param>
+    private static void PlaySoundContinuous(AudioClip clip, AudioSource source)
+    {
+        if (!audioSource.isPlaying)
         {
-            AddSound(2f, new Vector3(0, 10, 0), microwaveBeep, audioSource);
+            source.clip = clip;
+            source.Play();
         }
     }
+
     /// <summary>
     /// Play footstep noises if not already playing
     /// </summary>
@@ -108,6 +133,7 @@ public class SoundManager : MonoBehaviour {
             PlaySound(footsteps[rand.Next(footsteps.Length)]);
         }
     }
+
     /// <summary>
     /// Play a sound from Sound Manager
     /// </summary>
@@ -118,6 +144,7 @@ public class SoundManager : MonoBehaviour {
         audioSource.clip = clip;
         audioSource.Play();
     }
+
     /// <summary>
     /// Play a sound from a specific object
     /// </summary>
