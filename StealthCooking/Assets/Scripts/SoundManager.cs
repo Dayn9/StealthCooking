@@ -25,6 +25,8 @@ public class SoundManager : MonoBehaviour
 
     private static System.Random rand;
 
+    private static int timer;
+
     // Use this for initialization
     void Start () {
         audioSource = GetComponent<AudioSource>();
@@ -56,11 +58,13 @@ public class SoundManager : MonoBehaviour
         ripple = ripplePrefab;
 
         rand = new System.Random();
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer++;
         soundLevel -= soundDecayRate;
         if (soundLevel < 0) { soundLevel = 0; }
         if (soundLevel > maxSoundLevel) { soundLevel = maxSoundLevel; }
@@ -113,12 +117,17 @@ public class SoundManager : MonoBehaviour
     /// <param name="playerPosition">ocation of the sound</param>
     /// <param name="clip">Audio Clip to Play</param>
     /// <param name="source">AudioSource component of object playing sound</param>
-    public static void AddSoundContinuous(float volume, Vector3 position, AudioClip clip, AudioSource source)
+    /// <param name="delay">number of updates between ripples</param>
+    public static void AddSoundContinuous(float volume, Vector3 position, AudioClip clip, AudioSource source, int delay)
     {
-        if (!audioSource.isPlaying)
+        if (!source.isPlaying)
         {
             source.clip = clip;
             source.Play();
+        }
+
+        if (timer % delay == 0)
+        {
             AddSound(volume, position);
         }
     }
