@@ -17,7 +17,9 @@ public class SoundManager : MonoBehaviour {
     private static AudioSource audioSource; //Sound managers Audio Source
 
     public static AudioClip[] footsteps;
-    public static AudioClip microwaveBeep;
+    public static AudioClip microwaveOpen, microwaveHum, microwaveClose, microwaveBeep, 
+                            fridgeOpen, fridgeHum, fridgeClose, 
+                            pickup, place;
 
     System.Random rand;
 
@@ -28,7 +30,15 @@ public class SoundManager : MonoBehaviour {
         //Read in the sound files from the sound holder
         SoundHolder holder = GetComponent<SoundHolder>();
         footsteps = holder.footsteps;
-        microwaveBeep = holder.MicrowaveBeep;
+        microwaveOpen = holder.microwave[0];
+        microwaveHum = holder.microwave[1];
+        microwaveClose = holder.microwave[2];
+        microwaveBeep = holder.microwave[3];
+        fridgeOpen = holder.fridge[0];
+        fridgeHum = holder.fridge[0];
+        fridgeClose = holder.fridge[0];
+        fridgeOpen = holder.pickup;
+        fridgeOpen = holder.place;
 
         soundLevel = 0.0f;
         soundMeter.minValue = 0;

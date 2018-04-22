@@ -9,7 +9,7 @@ public enum AnimationState { IdleRight, IdleLeft, IdleUp, IdleDown, WalkRight, W
 
 public class Player : MonoBehaviour
 {
-    private const float INTERACT_DISTANCE = 2;
+    private const float INTERACT_DISTANCE = 3.7f;
 
     Rigidbody rigidbody;
 
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
                  movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             }
             movement.Normalize();
-            movement *= 5;
+            movement *= 8;
 
             rigidbody.velocity = movement;
 
