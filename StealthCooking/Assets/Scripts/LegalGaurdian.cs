@@ -28,7 +28,7 @@ public class LegalGaurdian : MonoBehaviour
     private int maxWanderTimes = 3;     // the maximum number of times this gaurdian will wander before leaving
     [SerializeField] private Transform exit;            // where the exit is
     [SerializeField] private Transform player;
-    private float viewAngle = 90;       // the angle in degrees of this gaurdians field of view measured from the forward direction
+    private float viewAngle = 45;       // the angle in degrees of this gaurdians field of view measured from the forward direction
 
     // Methods
     public void Start()
@@ -132,9 +132,7 @@ public class LegalGaurdian : MonoBehaviour
             RaycastHit hit;
             Physics.Raycast(transform.position, lineOfSight, out hit, lineOfSight.magnitude);
 
-            Debug.Log(hit.collider.gameObject);
-
-            if (hit.collider.gameObject == player.gameObject)
+            if (hit.collider != null && hit.collider.gameObject == player.gameObject)
             {
                 return true;
             }
