@@ -13,6 +13,8 @@ public class Microwave : Appliance
     private float cookTime;
     private float cookedInTime;
 
+    private AudioSource audioSource;
+
     //update runs every frame
     private void Update()
     {
@@ -33,7 +35,7 @@ public class Microwave : Appliance
             {
                 state = MicrowaveState.Off;
                 Debug.Log("DING!");
-                //SoundManager.AddSound(4, transform.position, "MicrowaveBeep", audioSource);
+                SoundManager.AddSound(4, transform.position, SoundManager.microwaveBeep, audioSource);
             }
         }
     }
@@ -41,6 +43,8 @@ public class Microwave : Appliance
     //use for initialization
     private void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         state = MicrowaveState.Off;
 
         cookableTypes = new List<FoodType>
