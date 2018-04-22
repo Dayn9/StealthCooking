@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Dog : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+
     // Fields
     private NavMeshAgent agent;
     private AIState state;
@@ -29,7 +31,7 @@ public class Dog : MonoBehaviour
         if (CanSeePlayer())
         {
             agent.isStopped = true;
-            //SoundManager.AddSound(barkVolume, transform.position);
+            SoundManager.AddSound(4, transform.position, SoundManager.bark, audioSource);
             state = AIState.Waiting;
             timeAccumulator = 0;
         }

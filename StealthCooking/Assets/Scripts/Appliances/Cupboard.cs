@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cupboard : Appliance
 {
+
+    [SerializeField] private AudioSource source;
     [SerializeField] private FoodType startingType;
     private Food storedItem;
 
@@ -35,6 +37,8 @@ public class Cupboard : Appliance
             player.HeldItem = storedItem;
             storedItem = null;
 
+            SoundManager.AddSound(4, transform.position, SoundManager.pickup, source);
+
             Debug.Log("Player got: " + player.HeldItem.Type);
         }
         //player puts item in cupboard
@@ -42,6 +46,8 @@ public class Cupboard : Appliance
         {
             storedItem = player.HeldItem;
             player.HeldItem = null;
+
+            SoundManager.AddSound(4, transform.position, SoundManager.place, source);
 
             Debug.Log("Player left: " + storedItem.Type);
         }

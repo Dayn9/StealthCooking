@@ -22,6 +22,8 @@ public class Microwave : Appliance
     {
         if(state == MicrowaveState.Cooking)
         {
+            SoundManager.AddSoundContinuous(.5f, transform.position, SoundManager.microwaveHum, audioSource);
+
             cookTime -= Time.deltaTime;
             cookedInTime -= Time.deltaTime;
 
@@ -73,6 +75,8 @@ public class Microwave : Appliance
             cookTime = 10;
             cookedInTime = 8;
 
+            SoundManager.AddSound(4, transform.position, SoundManager.microwaveOpen, audioSource);
+
             Debug.Log("Player left: " + containedItem.Type);
         }
         //player gets item from microwave
@@ -80,6 +84,8 @@ public class Microwave : Appliance
         {
             player.HeldItem = containedItem;
             containedItem = null;
+
+            SoundManager.AddSound(4, transform.position, SoundManager.microwaveOpen, audioSource);
 
             Debug.Log("Player got: " + player.HeldItem.Type);
 
