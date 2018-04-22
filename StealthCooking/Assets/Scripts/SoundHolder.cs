@@ -7,6 +7,8 @@ using UnityEngine;
 public class SoundHolder : MonoBehaviour {
 
     [SerializeField] public AudioClip[] footsteps;
-    [SerializeField] public AudioClip MicrowaveBeep;
-    [SerializeField] public AudioClip Hum;
+    [SerializeField] public AudioClip[] microwave;
+    [SerializeField] public AudioClip[] fridge;
+    [SerializeField] public AudioClip pickup;
+    [SerializeField] public AudioClip place;
 }
