@@ -9,10 +9,13 @@ public enum FoodType
     Cheese,
     Pizza,
     SaucedDough,
-    UncookedPizza,
-    CookedPizza
+    CookedPizza,
 
     //etc
+
+
+
+    Null //only use this when setting the default food in an appliance to be "null"
 }
 
 public class Food : MonoBehaviour
@@ -20,18 +23,4 @@ public class Food : MonoBehaviour
     [SerializeField] private FoodType type;
 
     public FoodType Type { get { return type; } set { type = value; } }
-
-
-
-	// Use this for initialization
-	//void Start ()
- //   {
-		
-	//}
-	
-	// Update is called once per frame
-	//void Update ()
- //   {
-		
-	//}
 }

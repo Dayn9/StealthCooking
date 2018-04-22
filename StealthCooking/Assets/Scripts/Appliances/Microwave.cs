@@ -13,7 +13,11 @@ public class Microwave : Appliance
     private float cookTime;
     private float cookedInTime;
 
+    private AudioSource audioSource;
 
+    [SerializeField] private RecipieManager recipie;
+
+    //update runs every frame
     private void Update()
     {
         if(state == MicrowaveState.Cooking)
@@ -21,22 +25,28 @@ public class Microwave : Appliance
             cookTime -= Time.deltaTime;
             cookedInTime -= Time.deltaTime;
 
-            if(cookedInTime <= 0)
+            if(cookedInTime <= 0 && cookableTypes.Contains(containedItem.Type))
             {
-                containedItem.Type = (FoodType)System.Enum.Parse(typeof(FoodType), "Cooked" + containedItem.Type.ToString());
+                string type = "Cooked" + containedItem.Type;
+                containedItem.Type = (FoodType)System.Enum.Parse(typeof(FoodType), type);
+
+                Debug.Log("Finished cooking");
             }
 
             if(cookTime <= 0)
             {
-                //SoundManager.AddSound(15.f);
+                state = MicrowaveState.Off;
+                Debug.Log("DING!");
+                SoundManager.AddSound(4, transform.position, SoundManager.microwaveBeep, audioSource);
             }
         }
     }
 
-
     //use for initialization
     private void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         state = MicrowaveState.Off;
 
         cookableTypes = new List<FoodType>
@@ -52,6 +62,7 @@ public class Microwave : Appliance
     /// <param name="player"></param>
     public override void Interact(Player player)
     {
+        //starts an item cooking
         if (player.HeldItem != null && containedItem == null && state == MicrowaveState.Off && cookableTypes.Contains(player.HeldItem.Type))
         {
             containedItem = player.HeldItem;
@@ -59,13 +70,22 @@ public class Microwave : Appliance
 
             state = MicrowaveState.Cooking;
 
-            cookTime = 30;
-            cookedInTime = 26;
+            cookTime = 10;
+            cookedInTime = 8;
+
+            Debug.Log("Player left: " + containedItem.Type);
         }
-        else if (player.HeldItem == null && containedItem != null && state == MicrowaveState.Off)
+        //player gets item from microwave
+        else if (player.HeldItem == null && containedItem != null)
         {
             player.HeldItem = containedItem;
             containedItem = null;
+
+            Debug.Log("Player got: " + player.HeldItem.Type);
+
+            recipie.UpdateList(player.HeldItem.Type);
+
+            state = MicrowaveState.Off;
         }
         else
         {

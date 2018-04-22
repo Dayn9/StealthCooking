@@ -2,26 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.UI.Selectable;
 
+[RequireComponent(typeof(SoundHolder))]
+[RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour {
 
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
-    private static float maxSoundLevel = 10;
+    private static float maxSoundLevel = 20;
     [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
+    private static GameObject ripple;
 
-	// Use this for initialization
-	void Start () {
+    private static AudioSource audioSource; //Sound managers Audio Source
+
+    public static AudioClip[] footsteps;
+    public static AudioClip microwaveBeep;
+
+    System.Random rand;
+
+    // Use this for initialization
+    void Start () {
+        audioSource = GetComponent<AudioSource>();
+        
+        //Read in the sound files from the sound holder
+        SoundHolder holder = GetComponent<SoundHolder>();
+        footsteps = holder.footsteps;
+        microwaveBeep = holder.MicrowaveBeep;
+
         soundLevel = 0.0f;
         soundMeter.minValue = 0;
         soundMeter.maxValue = maxSoundLevel;
         soundMeter.interactable = false;
         soundMeter.value = soundMeter.minValue;
 
-        soundLevel = 5;
-	}
+        ripple = ripplePrefab;
+
+        rand = new System.Random();
+    }
 
     /// <summary>
     /// Add noise to the total Sound
@@ -38,17 +56,29 @@ public class SoundManager : MonoBehaviour {
                 soundLevel = maxSoundLevel;
             }
         }
-    }
 
+    }
     /// <summary>
     /// Add noise to the total Sound at a specific location
     /// </summary>
     /// <param name="volume">volume of sound to add (max is 10) </param>
     /// <param name="position">location of the sound</param>
-    public void AddSound(float volume, Vector2 position)
+    public static void AddSound(float volume, Vector3 position)
     {
         AddSound(volume);
-        Instantiate(ripplePrefab, position, ripplePrefab.transform.rotation);
+        Instantiate(ripple, position, ripple.transform.rotation).GetComponent<Ripple>().MaxSize = volume ;
+    }
+    /// <summary>
+    /// Add noise to the total Sound at a specific location and plays a sound
+    /// </summary>
+    /// <param name="volume">volume of sound to add (max is 10) </param>
+    /// <param name="playerPosition">ocation of the sound</param>
+    /// <param name="clip">Audio Clip to Play</param>
+    /// <param name="source">AudioSource component of object playing sound</param>
+    public static void AddSound(float volume, Vector3 position, AudioClip clip, AudioSource source)
+    {
+        AddSound(volume,position);
+        PlaySound(clip, source);
     }
 
     private static void WakeParents()
@@ -59,7 +89,44 @@ public class SoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         soundLevel -= soundDecayRate;
-        Mathf.Clamp(soundLevel, 0, maxSoundLevel);
+        if(soundLevel < 0) { soundLevel = 0; }
+        if(soundLevel > maxSoundLevel) { soundLevel = maxSoundLevel; }
         soundMeter.value = soundLevel;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddSound(2f, new Vector3(0, 10, 0), microwaveBeep, audioSource);
+        }
+    }
+    /// <summary>
+    /// Play footstep noises if not already playing
+    /// </summary>
+    private void PlayFootStepSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            PlaySound(footsteps[rand.Next(footsteps.Length)]);
+        }
+    }
+    /// <summary>
+    /// Play a sound from Sound Manager
+    /// </summary>
+    /// <param name="clip">Audio Clip to Play</param>
+    private void PlaySound(AudioClip clip)
+    {
+        audioSource.Stop(); //override current sound
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+    /// <summary>
+    /// Play a sound from a specific object
+    /// </summary>
+    /// <param name="clip">Audio Clip to Play</param>
+    /// <param name="source">AudioSource component of object playing sound</param>
+    private static void PlaySound(AudioClip clip, AudioSource source)
+    {
+        source.Stop();
+        source.clip = clip;
+        source.Play();
     }
 }
