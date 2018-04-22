@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour {
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
     private static float maxSoundLevel = 20;
-    //[SerializeField] private Slider soundMeter;
+    [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
     private static GameObject ripple;
 
@@ -26,10 +26,10 @@ public class SoundManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 
         soundLevel = 0.0f;
-        //soundMeter.minValue = 0;
-        //soundMeter.maxValue = maxSoundLevel;
-        //soundMeter.interactable = false;
-        //soundMeter.value = soundMeter.minValue;
+        soundMeter.minValue = 0;
+        soundMeter.maxValue = maxSoundLevel;
+        soundMeter.interactable = false;
+        soundMeter.value = soundMeter.minValue;
 
         ripple = ripplePrefab;
 
