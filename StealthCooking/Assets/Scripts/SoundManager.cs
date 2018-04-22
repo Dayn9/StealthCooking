@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(SoundHolder))]
 [RequireComponent(typeof(AudioSource))]
-public class SoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour
+{
+    private static GameObject legalGuardian;
+
+
+
+
 
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
@@ -39,6 +45,8 @@ public class SoundManager : MonoBehaviour {
         fridgeClose = holder.fridge[0];
         pickup = holder.pickup;
         place = holder.place;
+
+        legalGuardian = holder.legalGuardian;
 
         soundLevel = 0.0f;
         soundMeter.minValue = 0;
@@ -115,7 +123,7 @@ public class SoundManager : MonoBehaviour {
     //-----------------------------------------------------------------------------<<< ADD CODE FOR SPAWNING LEGAL GUARDIAN HERE <<<
     private static void WakeParents()
     {
-
+        legalGuardian.SetActive(true);
     }
 
 
@@ -136,7 +144,7 @@ public class SoundManager : MonoBehaviour {
     /// <summary>
     /// Play footstep noises if not already playing
     /// </summary>
-    private static void PlayFootStepSound()
+    public static void PlayFootStepSound()
     {
         if (!audioSource.isPlaying)
         {

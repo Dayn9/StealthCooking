@@ -14,6 +14,8 @@ public enum AIState
 
 public class LegalGaurdian : MonoBehaviour
 {
+    [SerializeField] private GameObject folder;
+
     // Fields
     private System.Random rng;
     private NavMeshAgent agent;
@@ -29,6 +31,7 @@ public class LegalGaurdian : MonoBehaviour
     [SerializeField] private Transform exit;            // where the exit is
     [SerializeField] private Transform player;
     private float viewAngle = 45;       // the angle in degrees of this gaurdians field of view measured from the forward direction
+    [SerializeField] private Collider exitCol;
 
     // Methods
     public void Start()
@@ -139,5 +142,14 @@ public class LegalGaurdian : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other == exitCol && state == AIState.Following)
+        {
+            state = AIState.Investigating;
+            folder.SetActive(false);
+        }
     }
 }
