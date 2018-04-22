@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Gets or sets the state of the player
     /// </summary>
-    public PlayerState State { get { return state; } set { state = value; } }
+    public PlayerState State { get { return state; } set { state = value; if (state == PlayerState.Interacting) { rigidbody.velocity = Vector3.zero; } } }
 
 
 

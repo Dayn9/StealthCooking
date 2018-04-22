@@ -13,9 +13,7 @@ public class Refrigerator : Appliance
 
     private RefrigeratorState state;
 
-    private List<KeyCode> numberKeys;
-
-
+    //use for initialization
     private void Awake()
     {
         storedItems = new List<Food>();
@@ -26,40 +24,28 @@ public class Refrigerator : Appliance
         }
 
         state = RefrigeratorState.Closed;
-
-        numberKeys = new List<KeyCode>
-        {
-            KeyCode.Alpha1,
-            KeyCode.Alpha2,
-            KeyCode.Alpha3,
-            KeyCode.Alpha4,
-            KeyCode.Alpha5,
-            KeyCode.Alpha6,
-            KeyCode.Alpha7,
-            KeyCode.Alpha8,
-            KeyCode.Alpha9
-        };
-
     }
 
+    //runs once per frame
     private void Update()
     {
         if(state == RefrigeratorState.Open)
         {
             //checks to see if the user is pressing one of the number keys
             int selectedNum = -1;
-            for(int i = 0; i < numberKeys.Count; i++)
-            {
-                if (Input.GetKeyDown(numberKeys[i]))
-                {
-                    selectedNum = i;
-                    i = numberKeys.Count;
-                }
-            }
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { selectedNum = 0; }
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) { selectedNum = 1; }
+            else if (Input.GetKeyDown(KeyCode.Alpha3)) { selectedNum = 2; }
+            else if (Input.GetKeyDown(KeyCode.Alpha4)) { selectedNum = 3; }
+            else if (Input.GetKeyDown(KeyCode.Alpha5)) { selectedNum = 4; }
+            else if (Input.GetKeyDown(KeyCode.Alpha6)) { selectedNum = 5; }
+            else if (Input.GetKeyDown(KeyCode.Alpha7)) { selectedNum = 6; }
+            else if (Input.GetKeyDown(KeyCode.Alpha8)) { selectedNum = 7; }
+            else if (Input.GetKeyDown(KeyCode.Alpha9)) { selectedNum = 8; }
 
             //if the user pressed a number that corresponds to an item in the refrigerator,
             //the player takes it from the refrigerator
-            if (storedItems.Count <= selectedNum + 1 && selectedNum != -1)
+            if (selectedNum < storedItems.Count && selectedNum != -1)
             {
                 player.HeldItem = storedItems[selectedNum];
                 storedItems.Remove(player.HeldItem);
@@ -70,6 +56,9 @@ public class Refrigerator : Appliance
         }
     }
 
+    /// <summary>
+    /// Allows player to interact with refrigerator
+    /// </summary>
     public override void Interact(Player player)
     {
         this.player = player;
@@ -78,6 +67,7 @@ public class Refrigerator : Appliance
         if(player.HeldItem != null && storedItems.Count < 9)
         {
             player.State = PlayerState.Interacting;
+
             storedItems.Add(player.HeldItem);
             player.HeldItem = null;
 
@@ -92,10 +82,12 @@ public class Refrigerator : Appliance
         //sets player to be interacting with the refrigerator
         if (player.HeldItem == null)
         {
+            player.State = PlayerState.Interacting;
+
             string items = "";
             for (int i = 0; i < storedItems.Count; i++)
             {
-                items += i + ": " + storedItems[i];
+                items += i + 1 + ": " + storedItems[i].Type + "   ";
             }
 
             state = RefrigeratorState.Open;
