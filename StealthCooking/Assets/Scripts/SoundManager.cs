@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 //using UnityEngine.UI.Selectable;
 
 public class SoundManager : MonoBehaviour {
@@ -13,8 +14,17 @@ public class SoundManager : MonoBehaviour {
     [SerializeField] private GameObject ripplePrefab;
     private static GameObject ripple;
 
-	// Use this for initialization
-	void Start () {
+    private static AudioSource audioSource; //Sound managers Audio Source
+    [SerializeField] public AudioClip[] footsteps;
+    [SerializeField] public AudioClip MicrowaveBeep;
+    [SerializeField] public AudioClip Hum;
+
+    System.Random rand;
+
+    // Use this for initialization
+    void Start () {
+        audioSource = GetComponent<AudioSource>();
+
         soundLevel = 0.0f;
         soundMeter.minValue = 0;
         soundMeter.maxValue = maxSoundLevel;
@@ -22,7 +32,9 @@ public class SoundManager : MonoBehaviour {
         soundMeter.value = soundMeter.minValue;
 
         ripple = ripplePrefab;
-	}
+
+        rand = new System.Random();
+    }
 
     /// <summary>
     /// Add noise to the total Sound
@@ -39,8 +51,8 @@ public class SoundManager : MonoBehaviour {
                 soundLevel = maxSoundLevel;
             }
         }
-    }
 
+    }
     /// <summary>
     /// Add noise to the total Sound at a specific location
     /// </summary>
@@ -50,6 +62,18 @@ public class SoundManager : MonoBehaviour {
     {
         AddSound(volume);
         Instantiate(ripple, position, ripple.transform.rotation).GetComponent<Ripple>().MaxSize = volume ;
+    }
+    /// <summary>
+    /// Add noise to the total Sound at a specific location and plays a sound
+    /// </summary>
+    /// <param name="volume">volume of sound to add (max is 10) </param>
+    /// <param name="playerPosition">ocation of the sound</param>
+    /// <param name="clip">Audio Clip to Play</param>
+    /// <param name="source">AudioSource component of object playing sound</param>
+    public static void AddSound(float volume, Vector3 position, AudioClip clip, AudioSource source)
+    {
+        AddSound(volume,position);
+        PlaySound(clip, source);
     }
 
     private static void WakeParents()
@@ -65,7 +89,38 @@ public class SoundManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            AddSound(2f, new Vector3(0, 10, 0));
+            AddSound(2f, new Vector3(0, 10, 0), MicrowaveBeep, audioSource);
         }
+    }
+    /// <summary>
+    /// Play footstep noises if not already playing
+    /// </summary>
+    private void PlayFootStepSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            PlaySound(footsteps[rand.Next(footsteps.Length)]);
+        }
+    }
+    /// <summary>
+    /// Play a sound from Sound Manager
+    /// </summary>
+    /// <param name="clip">Audio Clip to Play</param>
+    private void PlaySound(AudioClip clip)
+    {
+        audioSource.Stop(); //override current sound
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+    /// <summary>
+    /// Play a sound from a specific object
+    /// </summary>
+    /// <param name="clip">Audio Clip to Play</param>
+    /// <param name="source">AudioSource component of object playing sound</param>
+    private static void PlaySound(AudioClip clip, AudioSource source)
+    {
+        source.Stop();
+        source.clip = clip;
+        source.Play();
     }
 }
