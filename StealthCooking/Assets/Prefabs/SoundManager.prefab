@@ -144,8 +144,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aa9815a82e9755046ae5365ba3a21088, type: 3}
   - {fileID: 8300000, guid: 00934e39cc5f85b4da2048eb24c89aa5, type: 3}
   - {fileID: 8300000, guid: b3e7e275c92ddb24aa6879b4bf7c8e9a, type: 3}
-  MicrowaveBeep: {fileID: 8300000, guid: 50138aac1ee149d488bbf775a7558ed2, type: 3}
-  Hum: {fileID: 0}
+  microwave:
+  - {fileID: 8300000, guid: 654cb8f5633162a478fe2d744fb6ddf5, type: 3}
+  - {fileID: 8300000, guid: 9f6cdfc52a0331e47a4960ba07283e85, type: 3}
+  - {fileID: 8300000, guid: 100ecd58bf2789c4d870832cc61bfde6, type: 3}
+  - {fileID: 8300000, guid: 50138aac1ee149d488bbf775a7558ed2, type: 3}
+  fridge:
+  - {fileID: 8300000, guid: 66c8059047fc46e4fa4319c2239ff8df, type: 3}
+  - {fileID: 8300000, guid: c23bc5e0490de06499d29dab7f7bf0b2, type: 3}
+  - {fileID: 8300000, guid: f17e39cf5c43a24458bc60285397d099, type: 3}
+  pickup: {fileID: 8300000, guid: fdec221851fc6b74996461ac77fd818c, type: 3}
+  place: {fileID: 8300000, guid: 008d62de16707874b8f9591268834f02, type: 3}
 --- !u!114 &114508328244845602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,5 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDecayRate: 0.01
+  soundMeter: {fileID: 0}
   ripplePrefab: {fileID: 1885727938989636, guid: cfddcfada119da84b9d47847234a90ec,
     type: 2}

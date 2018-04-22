@@ -425,16 +425,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: fridge.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: microwave.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4241333687987982, guid: 87c909b69ffc93d45a86773d24a36155, type: 2}
       propertyPath: m_LocalPosition.x
       value: 766
@@ -467,51 +457,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: Pickup
-      value: 
-      objectReference: {fileID: 8300000, guid: fdec221851fc6b74996461ac77fd818c, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: microwave.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 654cb8f5633162a478fe2d744fb6ddf5, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: microwave.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9f6cdfc52a0331e47a4960ba07283e85, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: microwave.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 50138aac1ee149d488bbf775a7558ed2, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: microwave.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 100ecd58bf2789c4d870832cc61bfde6, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: fridge.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c8059047fc46e4fa4319c2239ff8df, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: fridge.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: c23bc5e0490de06499d29dab7f7bf0b2, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: fridge.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: f17e39cf5c43a24458bc60285397d099, type: 3}
-    - target: {fileID: 114381729458440476, guid: 87c909b69ffc93d45a86773d24a36155,
-        type: 2}
-      propertyPath: Place
-      value: 
-      objectReference: {fileID: 8300000, guid: 008d62de16707874b8f9591268834f02, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87c909b69ffc93d45a86773d24a36155, type: 2}
   m_IsPrefabParent: 0
