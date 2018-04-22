@@ -9,10 +9,6 @@ public class SoundManager : MonoBehaviour
 {
     private static GameObject legalGuardian;
 
-
-
-
-
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
     private static float maxSoundLevel = 20;
@@ -25,7 +21,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip[] footsteps;
     public static AudioClip microwaveOpen, microwaveHum, microwaveClose, microwaveBeep, 
                             fridgeOpen, fridgeHum, fridgeClose, 
-                            pickup, place;
+                            pickup, place, bark;
 
     private static System.Random rand;
 
@@ -45,6 +41,7 @@ public class SoundManager : MonoBehaviour
         fridgeClose = holder.fridge[0];
         pickup = holder.pickup;
         place = holder.place;
+        bark = holder.bark;
 
         legalGuardian = holder.legalGuardian;
 
@@ -116,8 +113,22 @@ public class SoundManager : MonoBehaviour
     /// <param name="source">AudioSource component of object playing sound</param>
     public static void AddSoundContinuous(float volume, Vector3 position, AudioClip clip, AudioSource source)
     {
-        AddSound(volume, position);
-        PlaySoundContinuous(clip, source);
+        if (!audioSource.isPlaying)
+        {
+            source.clip = clip;
+            source.Play();
+            AddSound(volume, position);
+        }
+    }
+
+    public static void AddSoundFootsteps(float volume, Vector3 playerPosition)
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = footsteps[rand.Next(footsteps.Length)];
+            audioSource.Play();
+            AddSound(volume, playerPosition);
+        }
     }
 
     //-----------------------------------------------------------------------------<<< ADD CODE FOR SPAWNING LEGAL GUARDIAN HERE <<<

@@ -11,6 +11,7 @@ public class SoundHolder : MonoBehaviour {
     [SerializeField] public AudioClip[] fridge;
     [SerializeField] public AudioClip pickup;
     [SerializeField] public AudioClip place;
+    [SerializeField] public AudioClip bark;
 
     [SerializeField] public GameObject legalGuardian;
 }

@@ -155,6 +155,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f17e39cf5c43a24458bc60285397d099, type: 3}
   pickup: {fileID: 8300000, guid: fdec221851fc6b74996461ac77fd818c, type: 3}
   place: {fileID: 8300000, guid: 008d62de16707874b8f9591268834f02, type: 3}
+  bark: {fileID: 8300000, guid: 6582788200779bc4e921de16c2bad9af, type: 3}
+  legalGuardian: {fileID: 0}
 --- !u!114 &114508328244845602
 MonoBehaviour:
   m_ObjectHideFlags: 1
