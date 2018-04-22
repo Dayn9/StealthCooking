@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DavisScene.unity
+- path: Assets/Scenes/MarkUIScene.unity
   isLoaded: 1
   isActive: 1
