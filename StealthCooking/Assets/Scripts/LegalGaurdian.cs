@@ -32,6 +32,7 @@ public class LegalGaurdian : MonoBehaviour
     [SerializeField] private Transform player;
     private float viewAngle = 45;       // the angle in degrees of this gaurdians field of view measured from the forward direction
     [SerializeField] private Collider exitCol;
+    private const float MIN_VOLUME = 3;
 
     // Methods
     public void Start()
@@ -105,11 +106,11 @@ public class LegalGaurdian : MonoBehaviour
     /// </summary>
     /// <param name="transform">The transform of the new destination.</param>
     /// <param name="radius">The radius to check against.</param>
-    public void SetDestination(Transform transform, float radius)
+    public void SetDestination(Vector3 position, float volume)
     {
-        if ((transform.position - this.transform.position).sqrMagnitude < radius * radius)
+        if (volume > MIN_VOLUME)
         {
-            agent.destination = transform.position;
+            agent.destination = position;
             state = AIState.Investigating;
         }
     }
