@@ -90,7 +90,7 @@ public class SoundManager : MonoBehaviour {
 	void Update () {
         soundLevel -= soundDecayRate;
         Mathf.Clamp(soundLevel, 0, maxSoundLevel);
-        //soundMeter.value = soundLevel;
+        soundMeter.value = soundLevel;
 
         if (Input.GetKeyDown(KeyCode.P))
         {
