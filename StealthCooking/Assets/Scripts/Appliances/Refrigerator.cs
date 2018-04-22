@@ -42,6 +42,11 @@ public class Refrigerator : Appliance
             else if (Input.GetKeyDown(KeyCode.Alpha7)) { selectedNum = 6; }
             else if (Input.GetKeyDown(KeyCode.Alpha8)) { selectedNum = 7; }
             else if (Input.GetKeyDown(KeyCode.Alpha9)) { selectedNum = 8; }
+            //lets player back out without taking item
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                player.State = PlayerState.Waiting;
+            }
 
             //if the user pressed a number that corresponds to an item in the refrigerator,
             //the player takes it from the refrigerator
