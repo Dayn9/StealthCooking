@@ -25,12 +25,14 @@ public class Microwave : Appliance
             {
                 string type = "Cooked" + containedItem.Type;
                 containedItem.Type = (FoodType)System.Enum.Parse(typeof(FoodType), type);
+
+                Debug.Log("Finished cooking");
             }
 
             if(cookTime <= 0)
             {
                 state = MicrowaveState.Off;
-                Debug.Log("Finished cooking");
+                Debug.Log("DING!");
                 //SoundManager.AddSound(15);
             }
         }
@@ -68,12 +70,14 @@ public class Microwave : Appliance
             Debug.Log("Player left: " + containedItem.Type);
         }
         //player gets item from microwave
-        else if (player.HeldItem == null && containedItem != null && state == MicrowaveState.Off)
+        else if (player.HeldItem == null && containedItem != null)
         {
             player.HeldItem = containedItem;
             containedItem = null;
 
             Debug.Log("Player got: " + player.HeldItem.Type);
+
+            state = MicrowaveState.Off;
         }
         else
         {
