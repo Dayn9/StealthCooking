@@ -1,12 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using UnityEngine.UI;
 
-=======
-//using UnityEngine.UI;
->>>>>>> 61925844e1e25b99ef8f651207cafba35ef1bebe
 //using UnityEngine.UI.Selectable;
 
 public class SoundManager : MonoBehaviour {
