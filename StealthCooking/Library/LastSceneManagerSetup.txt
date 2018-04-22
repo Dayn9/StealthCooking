@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/MatthewScene.unity
+=======
 - path: Assets/Scenes/Slice.unity
+>>>>>>> 37b3dff16cb731ff99421c8082f564efeb4f064e
   isLoaded: 1
   isActive: 1
