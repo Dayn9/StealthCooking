@@ -1,17 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 9daaea6b94b21414688be7b5f309b816
-timeCreated: 1524358420
-licenseType: Free
-TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 4
-  mipmaps:
-    mipMapMode: 0
-    enableMipMap: 1
-=======
-guid: 57d765dff4be50546a1ca2c9a0872d90
-timeCreated: 1524358995
+timeCreated: 1524364631
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -22,7 +11,6 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
->>>>>>> 2b41a6f4a2125e616645ce2075644d24d9e0ab82
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -45,18 +33,6 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-    filterMode: -1
-    aniso: -1
-    mipBias: -1
-    wrapU: -1
-    wrapV: -1
-    wrapW: -1
-  nPOTScale: 1
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 0
-=======
     filterMode: 0
     aniso: -1
     mipBias: -1
@@ -67,7 +43,6 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
->>>>>>> 2b41a6f4a2125e616645ce2075644d24d9e0ab82
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,15 +50,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
-<<<<<<< HEAD
-  alphaIsTransparency: 0
-  spriteTessellationDetail: -1
-  textureType: 0
-=======
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
->>>>>>> 2b41a6f4a2125e616645ce2075644d24d9e0ab82
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -91,8 +60,6 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-<<<<<<< HEAD
-=======
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -112,7 +79,6 @@ TextureImporter:
   - buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
->>>>>>> 2b41a6f4a2125e616645ce2075644d24d9e0ab82
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -121,9 +87,6 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-<<<<<<< HEAD
-    sprites: []
-=======
     sprites:
     - serializedVersion: 2
       name: PlayerIdleNorth_0
@@ -153,7 +116,6 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
->>>>>>> 2b41a6f4a2125e616645ce2075644d24d9e0ab82
     outline: []
     physicsShape: []
   spritePackingTag: 

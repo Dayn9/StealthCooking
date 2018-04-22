@@ -15,6 +15,8 @@ public class Microwave : Appliance
 
     private AudioSource audioSource;
 
+    [SerializeField] private RecipieManager recipie;
+
     //update runs every frame
     private void Update()
     {
@@ -80,6 +82,8 @@ public class Microwave : Appliance
             containedItem = null;
 
             Debug.Log("Player got: " + player.HeldItem.Type);
+
+            recipie.UpdateList(player.HeldItem.Type);
 
             state = MicrowaveState.Off;
         }

@@ -9,6 +9,8 @@ public class CraftingTable : Appliance
     private Food storedItem;
     private Dictionary<FoodType, Dictionary<FoodType, FoodType>> foodCombinations;
 
+    [SerializeField] private RecipieManager recipie;
+
     /// <summary>
     /// Sets up possible combinations
     /// </summary>
@@ -68,6 +70,8 @@ public class CraftingTable : Appliance
             player.HeldItem = null;
 
             Debug.Log("Player left: " + storedItem.Type);
+
+            recipie.UpdateList(storedItem.Type);
         }
         //combines items
         else if (storedItem != null && player.HeldItem != null)
@@ -76,6 +80,8 @@ public class CraftingTable : Appliance
             {
                 storedItem.Type = foodCombinations[player.HeldItem.Type][storedItem.Type];
                 player.HeldItem = null;
+
+                recipie.UpdateList(storedItem.Type);
             }
 
             Debug.Log("Table now has: " + storedItem.Type);
