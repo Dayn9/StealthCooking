@@ -6,6 +6,8 @@ public enum RefrigeratorState { Open, Closed }
 
 public class Refrigerator : Appliance
 {
+    [SerializeField] private AudioSource source;
+
     [SerializeField] private List<FoodType> initialItems;
     private List<Food> storedItems;
 
@@ -56,6 +58,8 @@ public class Refrigerator : Appliance
                 storedItems.Remove(player.HeldItem);
                 player.State = PlayerState.Waiting;
 
+                SoundManager.AddSound(4, transform.position, SoundManager.fridgeClose, source);
+
                 Debug.Log("Player got: " + player.HeldItem.Type);
             }
         }
@@ -76,6 +80,7 @@ public class Refrigerator : Appliance
             storedItems.Add(player.HeldItem);
             player.HeldItem = null;
 
+
             Debug.Log("Player left : " + storedItems[storedItems.Count - 1].Type);
         }
         else if((player.HeldItem != null && storedItems.Count >= 9) || storedItems.Count == 0)
@@ -94,6 +99,8 @@ public class Refrigerator : Appliance
             {
                 items += i + 1 + ": " + storedItems[i].Type + "   ";
             }
+
+            SoundManager.AddSound(4, transform.position, SoundManager.fridgeOpen, source);
 
             state = RefrigeratorState.Open;
 

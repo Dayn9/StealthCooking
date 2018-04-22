@@ -115,16 +115,19 @@ public class Player : MonoBehaviour
         {
             case AnimationState.WalkRight:
                 animator.Play("WalkRight");
-                //SoundManager.AddSoundContinuous(2, transform.position, SoundManager.footsteps, )
+                SoundManager.AddSoundFootsteps(.5f, transform.position);
                 break;
             case AnimationState.WalkLeft:
                 animator.Play("WalkLeft");
+                SoundManager.AddSoundFootsteps(.5f, transform.position);
                 break;
             case AnimationState.WalkUp:
                 animator.Play("WalkUp");
+                SoundManager.AddSoundFootsteps(.5f, transform.position);
                 break;
             case AnimationState.WalkDown:
                 animator.Play("WalkDown");
+                SoundManager.AddSoundFootsteps(.5f, transform.position);
                 break;
             case AnimationState.IdleRight:
                 animator.Play("IdleRight");

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CraftingTable : Appliance
 {
+    [SerializeField] private AudioSource source;
+
     [SerializeField] private FoodType startingType;
     private Food storedItem;
     private Dictionary<FoodType, Dictionary<FoodType, FoodType>> foodCombinations;
@@ -69,6 +71,8 @@ public class CraftingTable : Appliance
             player.HeldItem = storedItem;
             storedItem = null;
 
+            SoundManager.AddSound(4, transform.position, SoundManager.pickup, source);
+
             Debug.Log("Player got: " + player.HeldItem.Type);
         }
         //player puts item on empty table
@@ -76,6 +80,8 @@ public class CraftingTable : Appliance
         {
             storedItem = player.HeldItem;
             player.HeldItem = null;
+
+            SoundManager.AddSound(4, transform.position, SoundManager.place, source);
 
             Debug.Log("Player left: " + storedItem.Type);
 
@@ -88,6 +94,8 @@ public class CraftingTable : Appliance
             {
                 storedItem.Type = foodCombinations[player.HeldItem.Type][storedItem.Type];
                 player.HeldItem = null;
+
+                //SoundManager.AddSound(4, transform.position, SoundManager.squish, source);
 
                 recipie.UpdateList(storedItem.Type);
             }
