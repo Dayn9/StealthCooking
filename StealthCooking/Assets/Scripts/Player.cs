@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
         {
             case AnimationState.WalkRight:
                 animator.Play("WalkRight");
+                //SoundManager.AddSoundContinuous(2, transform.position, SoundManager.footsteps, )
                 break;
             case AnimationState.WalkLeft:
                 animator.Play("WalkLeft");
