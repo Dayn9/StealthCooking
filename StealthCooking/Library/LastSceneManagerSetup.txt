@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Slice.unity
+=======
+- path: Assets/Scenes/DaneSoundText.unity
+>>>>>>> 3c881d679acba309e7e5774bff4d65eec23dd785
   isLoaded: 1
   isActive: 1
