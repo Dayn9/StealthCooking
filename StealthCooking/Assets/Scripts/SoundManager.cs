@@ -89,7 +89,8 @@ public class SoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         soundLevel -= soundDecayRate;
-        Mathf.Clamp(soundLevel, 0, maxSoundLevel);
+        if(soundLevel < 0) { soundLevel = 0; }
+        if(soundLevel > maxSoundLevel) { soundLevel = maxSoundLevel; }
         soundMeter.value = soundLevel;
 
         if (Input.GetKeyDown(KeyCode.P))
