@@ -5,6 +5,8 @@ using System.Linq;
 
 public enum PlayerState { Waiting, Interacting }
 
+public enum AnimationState { IdleRight, IdleLeft, IdleUp, IdleDown, WalkRight, WalkLeft, WalkUp, WalkDown,}
+
 public class Player : MonoBehaviour
 {
     private const float INTERACT_DISTANCE = 2;
@@ -15,6 +17,9 @@ public class Player : MonoBehaviour
 
     private Food heldItem;
 
+    private Animator animator;
+    private AnimationState animState;
+
     /// <summary>
     /// Gets or sets the item that the player is holding
     /// </summary>
@@ -22,7 +27,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Gets or sets the state of the player
     /// </summary>
-    public PlayerState State { get { return state; } set { state = value; } }
+    public PlayerState State { get { return state; } set { state = value; if (state == PlayerState.Interacting) { rigidbody.velocity = Vector3.zero; } } }
 
 
 
@@ -32,11 +37,14 @@ public class Player : MonoBehaviour
     {
         state = PlayerState.Waiting;
         rigidbody = gameObject.GetComponent<Rigidbody>();
+
+        animator = gameObject.GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        //interacting
         if (Input.GetKeyDown(KeyCode.E))
         {
             //checks to see if any appliances are within range of the player
@@ -51,18 +59,84 @@ public class Player : MonoBehaviour
             }
         }
 
+        //movement
         if (state == PlayerState.Waiting)
         {
-            Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            Vector3 movement = Vector3.zero;
+            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+            {
+                 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            }
             movement.Normalize();
             movement *= 5;
 
             rigidbody.velocity = movement;
+
+            if (movement.x > 0)
+            {
+                animState = AnimationState.WalkRight;
+            }
+            else if (movement.x < 0)
+            {
+                animState = AnimationState.WalkLeft;
+            }
+            else if (movement.z > 0)
+            {
+                animState = AnimationState.WalkUp;
+            }
+            else if (movement.z < 0)
+            {
+                animState = AnimationState.WalkDown;
+            }
+            else if (movement == Vector3.zero)
+            {
+                switch (animState)
+                {
+                    case AnimationState.WalkRight:
+                        animState = AnimationState.IdleRight;
+                        break;
+                    case AnimationState.WalkLeft:
+                        animState = AnimationState.IdleLeft;
+                        break;
+                    case AnimationState.WalkUp:
+                        animState = AnimationState.IdleUp;
+                        break;
+                    case AnimationState.WalkDown:
+                        animState = AnimationState.IdleDown;
+                        break;
+                }
+            }
+            
+            //Animator.Play(string);
         }
 
-        if((Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) || state == PlayerState.Interacting)
+        //animation
+        switch (animState)
         {
-            
+            case AnimationState.WalkRight:
+                animator.Play("IdleRight");
+                break;
+            case AnimationState.WalkLeft:
+                animator.Play("IdleLeft");
+                break;
+            case AnimationState.WalkUp:
+                animator.Play("IdleUp");
+                break;
+            case AnimationState.WalkDown:
+                animator.Play("IdleDown");
+                break;
+            case AnimationState.IdleRight:
+                animator.Play("IdleRight");
+                break;
+            case AnimationState.IdleLeft:
+                animator.Play("IdleLeft");
+                break;
+            case AnimationState.IdleUp:
+                animator.Play("IdleUp");
+                break;
+            case AnimationState.IdleDown:
+                animator.Play("IdleDown");
+                break;
         }
     }
 }
