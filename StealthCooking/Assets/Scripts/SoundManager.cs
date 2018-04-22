@@ -15,15 +15,20 @@ public class SoundManager : MonoBehaviour {
     private static GameObject ripple;
 
     private static AudioSource audioSource; //Sound managers Audio Source
-    [SerializeField] public AudioClip[] footsteps;
-    [SerializeField] public AudioClip MicrowaveBeep;
-    [SerializeField] public AudioClip Hum;
+
+    public static AudioClip[] footsteps;
+    public static AudioClip microwaveBeep;
 
     System.Random rand;
 
     // Use this for initialization
     void Start () {
         audioSource = GetComponent<AudioSource>();
+        
+        //Read in the sound files from the sound holder
+        SoundHolder holder = GetComponent<SoundHolder>();
+        footsteps = holder.footsteps;
+        microwaveBeep = holder.MicrowaveBeep;
 
         soundLevel = 0.0f;
         soundMeter.minValue = 0;
