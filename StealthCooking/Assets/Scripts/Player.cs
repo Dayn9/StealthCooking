@@ -9,7 +9,7 @@ public enum AnimationState { IdleRight, IdleLeft, IdleUp, IdleDown, WalkRight, W
 
 public class Player : MonoBehaviour
 {
-    private const float INTERACT_DISTANCE = 3.7f;
+    private const float INTERACT_DISTANCE = 1.5f;
 
     Rigidbody rigidbody;
 
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
                  movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             }
             movement.Normalize();
-            movement *= 8;
+            movement *= 3;
 
             rigidbody.velocity = movement;
 
@@ -114,16 +114,16 @@ public class Player : MonoBehaviour
         switch (animState)
         {
             case AnimationState.WalkRight:
-                animator.Play("IdleRight");
+                animator.Play("WalkRight");
                 break;
             case AnimationState.WalkLeft:
-                animator.Play("IdleLeft");
+                animator.Play("WalkLeft");
                 break;
             case AnimationState.WalkUp:
-                animator.Play("IdleUp");
+                animator.Play("WalkUp");
                 break;
             case AnimationState.WalkDown:
-                animator.Play("IdleDown");
+                animator.Play("WalkDown");
                 break;
             case AnimationState.IdleRight:
                 animator.Play("IdleRight");

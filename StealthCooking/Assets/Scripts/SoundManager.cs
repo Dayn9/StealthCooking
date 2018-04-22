@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour {
                             fridgeOpen, fridgeHum, fridgeClose, 
                             pickup, place;
 
-    System.Random rand;
+    private static System.Random rand;
 
     // Use this for initialization
     void Start () {
@@ -37,8 +37,8 @@ public class SoundManager : MonoBehaviour {
         fridgeOpen = holder.fridge[0];
         fridgeHum = holder.fridge[0];
         fridgeClose = holder.fridge[0];
-        fridgeOpen = holder.pickup;
-        fridgeOpen = holder.place;
+        pickup = holder.pickup;
+        place = holder.place;
 
         soundLevel = 0.0f;
         soundMeter.minValue = 0;
@@ -136,7 +136,7 @@ public class SoundManager : MonoBehaviour {
     /// <summary>
     /// Play footstep noises if not already playing
     /// </summary>
-    private void PlayFootStepSound()
+    private static void PlayFootStepSound()
     {
         if (!audioSource.isPlaying)
         {
@@ -148,7 +148,7 @@ public class SoundManager : MonoBehaviour {
     /// Play a sound from Sound Manager
     /// </summary>
     /// <param name="clip">Audio Clip to Play</param>
-    private void PlaySound(AudioClip clip)
+    private static void PlaySound(AudioClip clip)
     {
         audioSource.Stop(); //override current sound
         audioSource.clip = clip;
