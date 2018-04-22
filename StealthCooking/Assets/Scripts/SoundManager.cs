@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//using UnityEngine.UI.Selectable;
-
+[RequireComponent(typeof(SoundHolder))]
+[RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour {
 
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
     private static float maxSoundLevel = 20;
-    //[SerializeField] private Slider soundMeter;
+    [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
     private static GameObject ripple;
 
@@ -31,10 +31,10 @@ public class SoundManager : MonoBehaviour {
         microwaveBeep = holder.MicrowaveBeep;
 
         soundLevel = 0.0f;
-        //soundMeter.minValue = 0;
-        //soundMeter.maxValue = maxSoundLevel;
-        //soundMeter.interactable = false;
-        //soundMeter.value = soundMeter.minValue;
+        soundMeter.minValue = 0;
+        soundMeter.maxValue = maxSoundLevel;
+        soundMeter.interactable = false;
+        soundMeter.value = soundMeter.minValue;
 
         ripple = ripplePrefab;
 
@@ -90,11 +90,11 @@ public class SoundManager : MonoBehaviour {
 	void Update () {
         soundLevel -= soundDecayRate;
         Mathf.Clamp(soundLevel, 0, maxSoundLevel);
-        //soundMeter.value = soundLevel;
+        soundMeter.value = soundLevel;
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            AddSound(2f, new Vector3(0, 10, 0), MicrowaveBeep, audioSource);
+            AddSound(2f, new Vector3(0, 10, 0), microwaveBeep, audioSource);
         }
     }
     /// <summary>
