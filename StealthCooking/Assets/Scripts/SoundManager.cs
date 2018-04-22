@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//using UnityEngine.UI.Selectable;
-
+[RequireComponent(typeof(SoundHolder))]
+[RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour {
 
     private static float soundLevel;
