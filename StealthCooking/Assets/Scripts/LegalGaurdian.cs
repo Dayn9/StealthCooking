@@ -19,7 +19,9 @@ public class LegalGaurdian : MonoBehaviour
     // Fields
     private System.Random rng;
     private NavMeshAgent agent;
+    private Animator anim;
     private AIState state;
+    private AnimationState animState;
     private float timeAccumulator;
     private const float WAIT_TIME = 3f;
     private float alertness;            // the percentage of how full the alertness bar is when they spot the player
@@ -32,13 +34,16 @@ public class LegalGaurdian : MonoBehaviour
     [SerializeField] private Transform player;
     private float viewAngle = 45;       // the angle in degrees of this gaurdians field of view measured from the forward direction
     [SerializeField] private Collider exitCol;
+    private const float MIN_VOLUME = 3;
 
     // Methods
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         rng = new System.Random();
         state = AIState.Waiting;
+        animState = AnimationState.IdleDown;
     }
 
     public void Update()
@@ -98,6 +103,69 @@ public class LegalGaurdian : MonoBehaviour
                 agent.destination = followTarget.position;
                 break;
         }
+
+        if (agent.velocity.x < 0 && Mathf.Abs(agent.velocity.x) >= Mathf.Abs(agent.velocity.z))
+        {
+            animState = AnimationState.WalkLeft;
+        }
+        else if (agent.velocity.x > 0 && Mathf.Abs(agent.velocity.x) >= Mathf.Abs(agent.velocity.z))
+        {
+            animState = AnimationState.WalkRight;
+        }
+        else if (agent.velocity.z < 0 && Mathf.Abs(agent.velocity.z) > Mathf.Abs(agent.velocity.x))
+        {
+            animState = AnimationState.WalkDown;
+        }
+        else if (agent.velocity.z > 0 && Mathf.Abs(agent.velocity.z) > Mathf.Abs(agent.velocity.x))
+        {
+            animState = AnimationState.WalkUp;
+        }
+        else if (agent.velocity == Vector3.zero)
+        {
+            switch (animState)
+            {
+                case AnimationState.WalkRight:
+                    animState = AnimationState.IdleRight;
+                    break;
+                case AnimationState.WalkLeft:
+                    animState = AnimationState.IdleLeft;
+                    break;
+                case AnimationState.WalkUp:
+                    animState = AnimationState.IdleUp;
+                    break;
+                case AnimationState.WalkDown:
+                    animState = AnimationState.IdleDown;
+                    break;
+            }
+        }
+
+        switch (animState)
+        {
+            case AnimationState.WalkRight:
+                anim.Play("WalkRight");
+                break;
+            case AnimationState.WalkLeft:
+                anim.Play("WalkLeft");
+                break;
+            case AnimationState.WalkUp:
+                anim.Play("WalkUp");
+                break;
+            case AnimationState.WalkDown:
+                anim.Play("WalkDown");
+                break;
+            case AnimationState.IdleRight:
+                anim.Play("IdleRight");
+                break;
+            case AnimationState.IdleLeft:
+                anim.Play("IdleLeft");
+                break;
+            case AnimationState.IdleUp:
+                anim.Play("IdleUp");
+                break;
+            case AnimationState.IdleDown:
+                anim.Play("IdleDown");
+                break;
+        }
     }
 
     /// <summary>
@@ -105,11 +173,11 @@ public class LegalGaurdian : MonoBehaviour
     /// </summary>
     /// <param name="transform">The transform of the new destination.</param>
     /// <param name="radius">The radius to check against.</param>
-    public void SetDestination(Transform transform, float radius)
+    public void SetDestination(Vector3 position, float volume)
     {
-        if ((transform.position - this.transform.position).sqrMagnitude < radius * radius)
+        if (volume > MIN_VOLUME)
         {
-            agent.destination = transform.position;
+            agent.destination = position;
             state = AIState.Investigating;
         }
     }

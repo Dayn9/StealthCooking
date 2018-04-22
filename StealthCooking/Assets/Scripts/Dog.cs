@@ -17,7 +17,9 @@ public class Dog : MonoBehaviour
     private const float WAIT_TIME = 3;
     [SerializeField] private Transform player;
     private float viewAngle = 45;
-    private float barkVolume = 1;
+    private float barkVolume = 4;
+    private float barkTimeAccumulator = 0;
+    private const float BARK_TIME = 1;
 
     // Methods
     public void Start()
@@ -31,13 +33,19 @@ public class Dog : MonoBehaviour
         if (CanSeePlayer())
         {
             agent.isStopped = true;
-            SoundManager.AddSound(4, transform.position, SoundManager.bark, audioSource);
+            barkTimeAccumulator += Time.deltaTime;
+            if (barkTimeAccumulator >= BARK_TIME)
+            {
+                barkTimeAccumulator = 0;
+                SoundManager.AddSound(barkVolume, transform.position, SoundManager.bark, audioSource);
+            }
             state = AIState.Waiting;
             timeAccumulator = 0;
         }
         else
         {
             agent.isStopped = false;
+            barkTimeAccumulator = 0;
         }
 
         switch (state)

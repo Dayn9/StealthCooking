@@ -108,6 +108,11 @@ public class SoundManager : MonoBehaviour
     {
         AddSound(volume,position);
         PlaySound(clip, source);
+
+        if (legalGuardian.activeInHierarchy)
+        {
+            legalGuardian.GetComponentInChildren<LegalGaurdian>().SetDestination(position, volume);
+        }
     }
 
     /// <summary>
