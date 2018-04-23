@@ -97,6 +97,12 @@ public class Dog : MonoBehaviour
                 case AnimationState.WalkLeft:
                     animState = AnimationState.IdleLeft;
                     break;
+                case AnimationState.IdleRight:
+                    animState = AnimationState.IdleRight;
+                    break;
+                case AnimationState.IdleLeft:
+                    animState = AnimationState.IdleLeft;
+                    break;
                 default:
                     animState = AnimationState.IdleRight;
                     break;
@@ -106,19 +112,19 @@ public class Dog : MonoBehaviour
         switch (animState)
         {
             case AnimationState.Action:
-                anim.Play("Bark");
+                //anim.Play("Bark");
                 break;
             case AnimationState.WalkRight:
-                anim.Play("WalkRight");
+                anim.Play("DogWalkRight");
                 break;
             case AnimationState.WalkLeft:
-                anim.Play("WalkLeft");
+                anim.Play("DogWalkLeft");
                 break;
             case AnimationState.IdleRight:
-                anim.Play("IdleRight");
+                anim.Play("DogIdleRight");
                 break;
             case AnimationState.IdleLeft:
-                anim.Play("IdleLeft");
+                anim.Play("DogIdleLeft");
                 break;
         }
     }
