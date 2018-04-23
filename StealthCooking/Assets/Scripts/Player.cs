@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     {
         if (other == exit && RecipieManager.eaten)
         {
-            Debug.Log("You win!");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
         }
     }
 }
