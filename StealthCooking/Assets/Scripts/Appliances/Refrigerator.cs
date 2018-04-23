@@ -62,6 +62,8 @@ public class Refrigerator : Appliance
                 storedItems.Remove(player.HeldItem);
                 player.State = PlayerState.Waiting;
 
+                state = RefrigeratorState.Closed;
+
                 SoundManager.AddSound(2, transform.position, SoundManager.fridgeClose, source);
 
                 Debug.Log("Player got: " + player.HeldItem.Type);
