@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
 {
+    [SerializeField] private string scene;
+
     public void Start()
     {
         GetComponent<Button>().onClick.AddListener(() => LoadLevel());
@@ -12,6 +14,6 @@ public class StartButton : MonoBehaviour
 
     public void LoadLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Slice");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 }
