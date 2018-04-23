@@ -9,6 +9,8 @@ public enum AnimationState { IdleRight, IdleLeft, IdleUp, IdleDown, WalkRight, W
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Collider exit;
+
     private const float INTERACT_DISTANCE = 1.5f;
 
     Rigidbody rigidbody;
@@ -141,6 +143,14 @@ public class Player : MonoBehaviour
             case AnimationState.IdleDown:
                 animator.Play("IdleDown");
                 break;
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other == exit && RecipieManager.eaten)
+        {
+            Debug.Log("You win!");
         }
     }
 }

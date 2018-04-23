@@ -6,6 +6,8 @@ public enum MicrowaveState { Off, Cooking }
 
 public class Microwave : Appliance
 {
+    private bool cooked;
+
     private MicrowaveState state;
     private Food containedItem;
     private List<FoodType> cookableTypes;
@@ -32,6 +34,8 @@ public class Microwave : Appliance
                 string type = "Cooked" + containedItem.Type;
                 containedItem.Type = (FoodType)System.Enum.Parse(typeof(FoodType), type);
 
+                cooked = true;
+
                 Debug.Log("Finished cooking");
             }
 
@@ -47,6 +51,8 @@ public class Microwave : Appliance
     //use for initialization
     private void Start()
     {
+        cooked = false;
+
         audioSource = gameObject.GetComponent<AudioSource>();
 
         state = MicrowaveState.Off;
@@ -90,6 +96,8 @@ public class Microwave : Appliance
             Debug.Log("Player got: " + player.HeldItem.Type);
 
             recipie.UpdateList(player.HeldItem.Type);
+
+            if(cooked == true) { player.HeldItem = null; }
 
             state = MicrowaveState.Off;
         }

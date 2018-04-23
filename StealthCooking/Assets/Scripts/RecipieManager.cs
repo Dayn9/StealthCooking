@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class RecipieManager : MonoBehaviour
 {
+    public static bool eaten;
+
     //                 Food Step             Object  Whether it's been checked off or not
     private Dictionary<FoodType, KeyValuePair<Text, bool>> toDoList;
     [SerializeField] private List<Text> toDoListTextObjects = new List<Text>();
@@ -12,6 +14,8 @@ public class RecipieManager : MonoBehaviour
 
     void Awake()
     {
+        eaten = false;
+
         toDoList = new Dictionary<FoodType, KeyValuePair<Text, bool>>();
         toDoList.Add(FoodType.Dough, new KeyValuePair<Text, bool>(toDoListTextObjects[0], false));
         toDoList.Add(FoodType.SaucedDough, new KeyValuePair<Text, bool>(toDoListTextObjects[1], false));
@@ -36,5 +40,16 @@ public class RecipieManager : MonoBehaviour
                 entry.Value.Key.text = "[X] " + entry.Value.Key.text.Substring(5);
             }
         }
+
+        bool done = true;
+        foreach (KeyValuePair<FoodType, KeyValuePair<Text, bool>> entry in toDoList)
+        {
+            if(entry.Value.Key.color != Color.green)
+            {
+                done = false;
+            }
+        }
+
+        if (done) { eaten = true; }
     }
 }
