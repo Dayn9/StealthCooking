@@ -144,7 +144,7 @@ public class LegalGaurdian : MonoBehaviour
         switch (animState)
         {
             case AnimationState.WalkRight:
-                anim.Play("WalkRigh");
+                anim.Play("WalkRight");
                 break;
             case AnimationState.WalkLeft:
                 anim.Play("WalkLeft");

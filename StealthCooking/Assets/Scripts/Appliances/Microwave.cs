@@ -39,7 +39,7 @@ public class Microwave : Appliance
             {
                 state = MicrowaveState.Off;
                 Debug.Log("DING!");
-                SoundManager.AddSound(4, transform.position, SoundManager.microwaveBeep, audioSource);
+                SoundManager.AddSound(6, transform.position, SoundManager.microwaveBeep, audioSource);
             }
         }
     }

@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
 
     private static float soundLevel;
     [SerializeField] private float soundDecayRate; //how fast the noise dies down
-    private static float maxSoundLevel = 20;
+    private static float maxSoundLevel = 25;
     [SerializeField] private Slider soundMeter;
     [SerializeField] private GameObject ripplePrefab;
     private static GameObject ripple;
