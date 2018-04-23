@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/DavisScene.unity
-=======
 - path: Assets/Scenes/Slice.unity
->>>>>>> d95009a00963ca9401dd0a9429fc282ccffd3122
   isLoaded: 1
   isActive: 1

@@ -13,6 +13,8 @@ public class CraftingTable : Appliance
 
     [SerializeField] private RecipieManager recipie;
 
+    public Food StoredItem { get { return storedItem; } }
+
     /// <summary>
     /// Sets up possible combinations
     /// </summary>
