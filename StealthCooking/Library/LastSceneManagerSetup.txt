@@ -1,4 +1,32 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8b9872ebf129fc0f42a48f04a83c5e0b5aaecead
+>>>>>>> cead7aa0f50c41e20c4fb7c9e9c6b4defc3abfed
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
+>>>>>>> ba4bde3e252082edd5b21a03d59357cb4ef0a246
 sceneSetups:
 - path: Assets/Scenes/Slice.unity
   isLoaded: 1
   isActive: 1
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+sceneSetups: []
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
+>>>>>>> 8b9872ebf129fc0f42a48f04a83c5e0b5aaecead
+>>>>>>> cead7aa0f50c41e20c4fb7c9e9c6b4defc3abfed
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
+>>>>>>> ba4bde3e252082edd5b21a03d59357cb4ef0a246
