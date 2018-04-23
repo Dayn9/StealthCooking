@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 sceneSetups:
 - path: Assets/Scenes/Slice.unity
   isLoaded: 1
   isActive: 1
+=======
+sceneSetups: []
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
