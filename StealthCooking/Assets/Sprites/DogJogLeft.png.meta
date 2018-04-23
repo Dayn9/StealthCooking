@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c1a0efceb4c2744419b1239d4cffe944
 timeCreated: 1524446928
 licenseType: Free
@@ -9,11 +10,22 @@ TextureImporter:
     21300004: DogJogLeft_2
     21300006: DogJogLeft_3
     21300008: DogJogLeft_4
+=======
+guid: 0579c459e49fc9f41b89a7ecc424940f
+timeCreated: 1524445950
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName: {}
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
     enableMipMap: 0
+=======
+    enableMipMap: 1
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,6 +48,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: 0
     aniso: -1
     mipBias: -1
@@ -46,16 +59,36 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
+=======
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
   spritePixelsToUnits: 32
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
+=======
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 0
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -70,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -161,6 +195,11 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+=======
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+>>>>>>> 4debb221ced7aacaa99d931a20796eb9184a6145
     outline: []
     physicsShape: []
   spritePackingTag: 

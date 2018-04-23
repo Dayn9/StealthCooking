@@ -58,7 +58,7 @@ public class Refrigerator : Appliance
                 storedItems.Remove(player.HeldItem);
                 player.State = PlayerState.Waiting;
 
-                SoundManager.AddSound(4, transform.position, SoundManager.fridgeClose, source);
+                SoundManager.AddSound(2, transform.position, SoundManager.fridgeClose, source);
 
                 Debug.Log("Player got: " + player.HeldItem.Type);
             }
@@ -100,7 +100,7 @@ public class Refrigerator : Appliance
                 items += i + 1 + ": " + storedItems[i].Type + "   ";
             }
 
-            SoundManager.AddSound(4, transform.position, SoundManager.fridgeOpen, source);
+            SoundManager.AddSound(2, transform.position, SoundManager.fridgeOpen, source);
 
             state = RefrigeratorState.Open;
 

@@ -13,6 +13,8 @@ public class CraftingTable : Appliance
 
     [SerializeField] private RecipieManager recipie;
 
+    public Food StoredItem { get { return storedItem; } }
+
     /// <summary>
     /// Sets up possible combinations
     /// </summary>
@@ -71,7 +73,7 @@ public class CraftingTable : Appliance
             player.HeldItem = storedItem;
             storedItem = null;
 
-            SoundManager.AddSound(4, transform.position, SoundManager.pickup, source);
+            SoundManager.AddSound(2, transform.position, SoundManager.pickup, source);
 
             Debug.Log("Player got: " + player.HeldItem.Type);
         }
@@ -81,7 +83,7 @@ public class CraftingTable : Appliance
             storedItem = player.HeldItem;
             player.HeldItem = null;
 
-            SoundManager.AddSound(4, transform.position, SoundManager.place, source);
+            SoundManager.AddSound(2, transform.position, SoundManager.place, source);
 
             Debug.Log("Player left: " + storedItem.Type);
 
