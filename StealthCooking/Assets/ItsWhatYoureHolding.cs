@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class ItsWhatYoureHolding : MonoBehaviour
 {
     [SerializeField] Player player;
-    [SerializeField] private Text textOfThingPlayerIsHolding;
+    [SerializeField] private Image textOfThingPlayerIsHolding;
 
-    private void Awake()
-    {
-        textOfThingPlayerIsHolding = this.GetComponent<Text>();
-    }
+    //private void Awake()
+    //{
+    //    textOfThingPlayerIsHolding = this.GetComponent<Text>();
+    //}
 
     // Use this for initialization
     void Start () {
@@ -23,11 +23,16 @@ public class ItsWhatYoureHolding : MonoBehaviour
     {
         if (player.HeldItem != null)
         {
-            textOfThingPlayerIsHolding.text = "" + player.HeldItem.Type.ToString();
+            Color seent = textOfThingPlayerIsHolding.color;
+            seent.a = 100;
+            textOfThingPlayerIsHolding.color = seent;
+            textOfThingPlayerIsHolding.sprite = FoodSpriteHolder.foodSprites[player.HeldItem.Type];
         }
         else
         {
-            textOfThingPlayerIsHolding.text = "";
+            Color zero = textOfThingPlayerIsHolding.color;
+            zero.a = 0;
+            textOfThingPlayerIsHolding.color = zero;
         }
 	}
 }

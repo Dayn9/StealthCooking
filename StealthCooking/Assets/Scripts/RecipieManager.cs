@@ -37,7 +37,7 @@ public class RecipieManager : MonoBehaviour
             if (entry.Key == typeOfFoodCreated && !entry.Value.Value)
             {
                 entry.Value.Key.color = Color.green;
-                entry.Value.Key.text = "[X] " + entry.Value.Key.text.Substring(5);
+                entry.Value.Key.text = "  [X] " + entry.Value.Key.text.Substring(7);
             }
         }
 

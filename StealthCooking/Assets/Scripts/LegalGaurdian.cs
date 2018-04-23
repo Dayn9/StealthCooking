@@ -50,6 +50,11 @@ public class LegalGaurdian : MonoBehaviour
 
     public void Update()
     {
+        if(CanSeePlayer() && Vector3.Distance(transform.position, player.position) <= 1)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Slice");
+        }
+
         if (CanSeePlayer())
         {
             state = AIState.Alert;

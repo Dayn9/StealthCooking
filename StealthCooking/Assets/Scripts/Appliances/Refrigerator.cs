@@ -15,6 +15,10 @@ public class Refrigerator : Appliance
 
     private RefrigeratorState state;
 
+    public string items;
+
+    public RefrigeratorState State { get { return state; } }
+
     //use for initialization
     private void Awake()
     {
@@ -94,10 +98,10 @@ public class Refrigerator : Appliance
         {
             player.State = PlayerState.Interacting;
 
-            string items = "";
+            items = "\n";
             for (int i = 0; i < storedItems.Count; i++)
             {
-                items += i + 1 + ": " + storedItems[i].Type + "   ";
+                items += i + 1 + ": " + storedItems[i].Type + "\n";
             }
 
             SoundManager.AddSound(2, transform.position, SoundManager.fridgeOpen, source);
