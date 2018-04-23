@@ -9,6 +9,8 @@ public class Cupboard : Appliance
     [SerializeField] private FoodType startingType;
     private Food storedItem;
 
+    public Food StoredItem { get { return storedItem; } }
+
     /// <summary>
     /// Sets up starting item
     /// </summary>

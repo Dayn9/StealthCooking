@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 guid: 9b7e49361f05f0e4ea13253bf13bc01b
 timeCreated: 1524439015
 licenseType: Pro
@@ -7,13 +9,16 @@ TextureImporter:
   fileIDToRecycleName: {}
 =======
 <<<<<<< HEAD
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
 guid: cb2624a7150b9c54b8a829517d9302ae
-timeCreated: 1524439999
+timeCreated: 1524441399
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: GuardianIdleSouth_0
     21300002: GuardianIdleSouth_1
+<<<<<<< HEAD
+=======
 =======
 guid: 05328700e65e08c4ab61864759b5ab70
 timeCreated: 1524439794
@@ -22,10 +27,14 @@ TextureImporter:
   fileIDToRecycleName: {}
 >>>>>>> d95009a00963ca9401dd0a9429fc282ccffd3122
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
+    enableMipMap: 0
+=======
 <<<<<<< HEAD
     enableMipMap: 1
 =======
@@ -35,6 +44,7 @@ TextureImporter:
     enableMipMap: 1
 >>>>>>> d95009a00963ca9401dd0a9429fc282ccffd3122
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -60,6 +70,9 @@ TextureImporter:
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
     filterMode: 0
     aniso: -1
     mipBias: -1
@@ -70,6 +83,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
     filterMode: -1
@@ -86,6 +101,7 @@ TextureImporter:
 =======
 >>>>>>> d95009a00963ca9401dd0a9429fc282ccffd3122
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -94,11 +110,16 @@ TextureImporter:
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
   spritePixelsToUnits: 32
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
   spritePixelsToUnits: 100
@@ -110,6 +131,7 @@ TextureImporter:
 =======
 >>>>>>> d95009a00963ca9401dd0a9429fc282ccffd3122
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -125,11 +147,14 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
 =======
 <<<<<<< HEAD
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -179,12 +204,15 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+<<<<<<< HEAD
+=======
 =======
   spriteSheet:
     serializedVersion: 2
     sprites: []
 >>>>>>> d95009a00963ca9401dd0a9429fc282ccffd3122
 >>>>>>> d6c13d0ebdf50e4302c5188c042d1bada7c81ddf
+>>>>>>> 8bc35bb77e48c653dd15e157cd0fd8791a8e6c61
     outline: []
     physicsShape: []
   spritePackingTag: 

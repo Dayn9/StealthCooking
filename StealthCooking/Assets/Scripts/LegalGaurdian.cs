@@ -40,10 +40,12 @@ public class LegalGaurdian : MonoBehaviour
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        anim = folder.GetComponentInChildren<Animator>();
         rng = new System.Random();
         state = AIState.Waiting;
         animState = AnimationState.IdleDown;
+
+        folder.SetActive(false);
     }
 
     public void Update()
@@ -142,7 +144,7 @@ public class LegalGaurdian : MonoBehaviour
         switch (animState)
         {
             case AnimationState.WalkRight:
-                anim.Play("WalkRight");
+                anim.Play("WalkRigh");
                 break;
             case AnimationState.WalkLeft:
                 anim.Play("WalkLeft");
