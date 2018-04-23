@@ -72,10 +72,10 @@ public class SoundManager : MonoBehaviour
         if (soundLevel > maxSoundLevel) { soundLevel = maxSoundLevel; }
         soundMeter.value = soundLevel;
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            AddSound(2f, new Vector3(0, 10, 0), microwaveBeep, audioSource);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    AddSound(2f, new Vector3(0, 10, 0), microwaveBeep, audioSource);
+        //}
     }
 
     /// <summary>
