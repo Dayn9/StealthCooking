@@ -6,6 +6,7 @@ Shader "Custom/RenderFirst"
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
+		_AlphaChannel("Alpha Level", Float) = 1
 	}
 
 	SubShader
@@ -44,16 +45,15 @@ Shader "Custom/RenderFirst"
 		}
 
 		sampler2D _MainTex;
-		float4 _MaskColor;
-		float _MaskOn;
+		float _AlphaChannel;
 
 		float4 frag(vertOutput output) : COLOR
 		{
 			float4 color = tex2D(_MainTex, output.uv);
-			/*if (color.a != 0 && _MaskOn != 0)
+			if (color.a != 0)
 			{
-				color = _MaskColor;
-			}*/
+				color.a = _AlphaChannel;
+			}
 			return color;
 		}
 			ENDCG

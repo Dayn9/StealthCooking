@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 3351acbdc2eb8674c90d7a45211c7fa7
+timeCreated: 1524454892
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -29,7 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -58,7 +60,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -67,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -76,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -84,7 +86,39 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
+    outline:
+    - - {x: 111.585175, y: 72.43153}
+      - {x: 78.6949, y: 109.30591}
+      - {x: 36.8788, y: 127.46802}
+      - {x: -24.079994, y: 129}
+      - {x: -69.94666, y: 112.58667}
+      - {x: -108.198975, y: 75.783905}
+      - {x: -129, y: 28.083405}
+      - {x: -129, y: -39.54666}
+      - {x: -106.973335, y: -78.54666}
+      - {x: -74.26471, y: -109.1777}
+      - {x: -25.209091, y: -129}
+      - {x: 28.386673, y: -129}
+      - {x: 77.9478, y: -107.83583}
+      - {x: 107.78667, y: -76.57333}
+      - {x: 127.947845, y: -32.616028}
+      - {x: 128.42667, y: 32.679993}
+    - - {x: -45.653214, y: -107.44977}
+      - {x: -82.03999, y: -81.78667}
+      - {x: -106.36055, y: -50.57338}
+      - {x: -116.70669, y: 0.47999573}
+      - {x: -107.58303, y: 42.42076}
+      - {x: -85.31556, y: 78.9718}
+      - {x: -46.849167, y: 107.58687}
+      - {x: 1.4043579, y: 116.676346}
+      - {x: 48.5166, y: 107.24724}
+      - {x: 80.72217, y: 81.76483}
+      - {x: 106.78604, y: 48.49797}
+      - {x: 115.31999, y: -0.16000366}
+      - {x: 107.1521, y: -48.82746}
+      - {x: 82.44597, y: -82.102356}
+      - {x: 44.646393, y: -107.2773}
+      - {x: -1.8800049, y: -114.746666}
     physicsShape: []
   spritePackingTag: 
   userData: 
