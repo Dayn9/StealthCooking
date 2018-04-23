@@ -6,6 +6,7 @@ public class Ripple : MonoBehaviour {
 
     private float maxSize; //max radius width in Unity units
     private static float growSpeed = 0.1f; //how fast sound travels
+    private float alpha;
     private float fadeRate; //how fast sound fades
     private new SpriteRenderer renderer;
 
@@ -17,6 +18,7 @@ public class Ripple : MonoBehaviour {
             {
                 maxSize = value;
                 fadeRate = growSpeed / maxSize;
+                alpha = 1.0f;
             }
         }
     }
@@ -27,7 +29,9 @@ public class Ripple : MonoBehaviour {
         if (transform.localScale.x <= maxSize)
         {
             transform.localScale += new Vector3(growSpeed, growSpeed, growSpeed);
-            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - fadeRate);
+            alpha -= fadeRate;
+            renderer.material.SetFloat("_AlphaChannel", alpha);
+            //renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - fadeRate);
         }
         else
         {
@@ -39,5 +43,6 @@ public class Ripple : MonoBehaviour {
     {
         renderer = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        alpha = 1.0f;
     }
 }
