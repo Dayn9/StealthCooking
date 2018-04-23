@@ -8,8 +8,11 @@ public class Dog : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     // Fields
+    [SerializeField] private GameObject folder;
     private NavMeshAgent agent;
+    private Animator anim;
     private AIState state;
+    private AnimationState animState;
     [SerializeField] private Transform[] path;
     private int currentPathIndex;
     private const float DIST_SLOP = 0.1f;
@@ -26,6 +29,8 @@ public class Dog : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         state = AIState.Wandering;
+        anim = folder.GetComponentInChildren<Animator>();
+        animState = AnimationState.IdleLeft;
     }
 
     public void Update()
@@ -67,6 +72,53 @@ public class Dog : MonoBehaviour
                     currentPathIndex = (currentPathIndex + 1) % path.Length;
                     agent.destination = path[currentPathIndex].position;
                 }
+                break;
+        }
+
+        if (barkTimeAccumulator != 0)
+        {
+            animState = AnimationState.Action;
+        }
+        else if (agent.velocity.x < 0)
+        {
+            animState = AnimationState.WalkLeft;
+        }
+        else if (agent.velocity.x > 0)
+        {
+            animState = AnimationState.WalkRight;
+        }
+        else if (agent.velocity == Vector3.zero)
+        {
+            switch (animState)
+            {
+                case AnimationState.WalkRight:
+                    animState = AnimationState.IdleRight;
+                    break;
+                case AnimationState.WalkLeft:
+                    animState = AnimationState.IdleLeft;
+                    break;
+                default:
+                    animState = AnimationState.IdleRight;
+                    break;
+            }
+        }
+
+        switch (animState)
+        {
+            case AnimationState.Action:
+                anim.Play("Bark");
+                break;
+            case AnimationState.WalkRight:
+                anim.Play("WalkRight");
+                break;
+            case AnimationState.WalkLeft:
+                anim.Play("WalkLeft");
+                break;
+            case AnimationState.IdleRight:
+                anim.Play("IdleRight");
+                break;
+            case AnimationState.IdleLeft:
+                anim.Play("IdleLeft");
                 break;
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 
 public enum PlayerState { Waiting, Interacting }
 
-public enum AnimationState { IdleRight, IdleLeft, IdleUp, IdleDown, WalkRight, WalkLeft, WalkUp, WalkDown,}
+public enum AnimationState { IdleRight, IdleLeft, IdleUp, IdleDown, WalkRight, WalkLeft, WalkUp, WalkDown, Action}
 
 public class Player : MonoBehaviour
 {
