@@ -12,8 +12,10 @@ public class SoundHolder : MonoBehaviour {
     [SerializeField] public AudioClip pickup;
     [SerializeField] public AudioClip place;
     [SerializeField] public AudioClip bark;
+    [SerializeField] public AudioClip bark2;
     [SerializeField] public AudioClip squish;
     [SerializeField] public AudioClip chop;
+    [SerializeField] public AudioClip creak;
 
     [SerializeField] public GameObject legalGuardian;
 }

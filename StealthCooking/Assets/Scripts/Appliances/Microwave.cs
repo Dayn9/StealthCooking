@@ -22,7 +22,7 @@ public class Microwave : Appliance
     {
         if(state == MicrowaveState.Cooking)
         {
-            SoundManager.AddSoundContinuous(.5f, transform.position, SoundManager.microwaveHum, audioSource);
+            SoundManager.AddSoundContinuous(1f, transform.position, SoundManager.microwaveHum, audioSource, 60);
 
             cookTime -= Time.deltaTime;
             cookedInTime -= Time.deltaTime;
