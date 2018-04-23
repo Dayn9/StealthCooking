@@ -73,7 +73,7 @@ public class CraftingTable : Appliance
             player.HeldItem = storedItem;
             storedItem = null;
 
-            SoundManager.AddSound(2, transform.position, SoundManager.pickup, source);
+            SoundManager.AddSound(1.7f, transform.position, SoundManager.pickup, source);
 
             Debug.Log("Player got: " + player.HeldItem.Type);
         }
@@ -83,7 +83,7 @@ public class CraftingTable : Appliance
             storedItem = player.HeldItem;
             player.HeldItem = null;
 
-            SoundManager.AddSound(2, transform.position, SoundManager.place, source);
+            SoundManager.AddSound(1.7f, transform.position, SoundManager.place, source);
 
             Debug.Log("Player left: " + storedItem.Type);
 
@@ -97,7 +97,7 @@ public class CraftingTable : Appliance
                 storedItem.Type = foodCombinations[player.HeldItem.Type][storedItem.Type];
                 player.HeldItem = null;
 
-                //SoundManager.AddSound(4, transform.position, SoundManager.squish, source);
+                SoundManager.AddSound(1.7f, transform.position, SoundManager.squish, source);
 
                 recipie.UpdateList(storedItem.Type);
             }

@@ -42,7 +42,7 @@ public class Dog : MonoBehaviour
             if (barkTimeAccumulator >= BARK_TIME)
             {
                 barkTimeAccumulator = 0;
-                SoundManager.AddSound(barkVolume, transform.position, SoundManager.bark, audioSource);
+                SoundManager.AddSound(barkVolume, transform.position, SoundManager.bark2, audioSource);
             }
             state = AIState.Waiting;
             timeAccumulator = 0;
